@@ -5296,7 +5296,7 @@ dialog::backdrop {
 
 .stranger-snapshot {
   display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 12px;
   margin-top: -36px;
   position: relative;
@@ -5568,18 +5568,68 @@ dialog::backdrop {
 }
 .stranger-book-layout {
   display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
+  grid-template-columns: 0.92fr 1.08fr;
   gap: 36px;
   align-items: start;
 }
 .stranger-book-story .section-heading {
-  margin-bottom: 22px;
+  margin-bottom: 18px;
+}
+.stranger-price-board {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.stranger-price-board article {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 14px 12px;
+  text-align: center;
+}
+.stranger-price-board span {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.stranger-price-board strong {
+  display: block;
+  font-size: 22px;
+  color: var(--green);
+  letter-spacing: -0.4px;
+}
+.stranger-price-board p {
+  margin: 6px 0 0;
+  font-size: 12px;
+  color: var(--muted);
+}
+.stranger-include-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 18px;
+  padding: 0;
+  list-style: none;
+}
+.stranger-include-pills li {
+  padding: 7px 11px;
+  border-radius: 999px;
+  background: #eef5e6;
+  border: 1px solid #d5e3cb;
+  color: var(--green);
+  font-size: 12px;
+  font-weight: 700;
 }
 .stranger-highlights {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
-  margin-bottom: 22px;
+  margin-bottom: 8px;
 }
 .stranger-highlights article {
   background: var(--ivory);
@@ -5598,42 +5648,6 @@ dialog::backdrop {
   color: var(--muted);
   font-size: 13px;
   line-height: 1.6;
-}
-.stranger-book-steps {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  gap: 12px;
-}
-.stranger-book-steps li {
-  display: grid;
-  grid-template-columns: 42px 1fr;
-  gap: 12px;
-  align-items: start;
-  padding: 12px 0;
-  border-top: 1px solid var(--line);
-}
-.stranger-book-steps li:last-child {
-  border-bottom: 1px solid var(--line);
-}
-.stranger-book-steps span {
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  color: var(--green);
-  padding-top: 3px;
-}
-.stranger-book-steps strong {
-  display: block;
-  margin-bottom: 4px;
-  font-size: 14px;
-}
-.stranger-book-steps p {
-  margin: 0;
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.55;
 }
 
 .stranger-book-card {
@@ -5671,13 +5685,20 @@ dialog::backdrop {
   opacity: 0.8;
 }
 .stranger-book-price strong {
-  font-size: 22px;
+  font-size: 28px;
   color: #e8f3c8;
+  letter-spacing: -0.6px;
+}
+.stranger-book-price em {
+  font-style: normal;
+  font-size: 13px;
+  color: #d9e6da;
 }
 .stranger-book-card-note {
   margin: 0;
   font-size: 13px;
   color: #d9e6da;
+  line-height: 1.45;
 }
 .stranger-book-card-note strong {
   color: #fff;
@@ -5686,6 +5707,86 @@ dialog::backdrop {
   display: grid;
   gap: 16px;
   padding: 18px 22px 22px;
+}
+.stranger-share-field {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+.stranger-share-field legend,
+.stranger-date-field legend {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+.stranger-share-chips {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+.stranger-share-chip {
+  position: relative;
+  display: grid;
+  gap: 2px;
+  padding: 11px 10px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fafbf7;
+  cursor: pointer;
+  text-align: left;
+}
+.stranger-share-chip input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+.stranger-share-chip .share-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--ink);
+}
+.stranger-share-chip .share-price {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--green);
+}
+.stranger-share-chip .share-hint {
+  font-size: 10px;
+  color: var(--muted);
+  line-height: 1.35;
+}
+.stranger-share-chip.is-selected,
+.stranger-share-chip:has(input:checked) {
+  border-color: var(--green);
+  background: #eef5e6;
+  box-shadow: inset 0 0 0 1px rgba(24, 63, 53, 0.15);
+}
+.stranger-home-price {
+  margin: 14px 0 0 !important;
+  color: var(--ink) !important;
+  font-size: 18px;
+  font-weight: 700;
+}
+.stranger-home-price span {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted);
+}
+.stranger-home-price-alt {
+  display: block;
+  margin-top: 4px;
+  font-size: 12px !important;
+}
+.stranger-mobile-bar {
+  display: none;
 }
 .stranger-date-field {
   margin: 0;
@@ -5831,10 +5932,31 @@ dialog::backdrop {
   background: #f3f6ef;
   color: var(--ink);
   font-size: 13px;
-  line-height: 1.5;
-  font-weight: 600;
+  line-height: 1.45;
   text-transform: none;
   letter-spacing: 0;
+  display: grid;
+  gap: 4px;
+}
+.stranger-book-summary p {
+  margin: 0;
+}
+.stranger-book-summary .summary-total {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px;
+}
+.stranger-book-summary .summary-total strong {
+  font-size: 22px;
+  color: var(--green);
+}
+.stranger-book-summary .summary-total span,
+.stranger-book-summary .summary-meta,
+.stranger-book-summary .summary-pickup {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
 }
 .stranger-book-submit {
   width: 100%;
@@ -5851,13 +5973,11 @@ dialog::backdrop {
 
 @media (max-width: 1100px) {
   .stranger-snapshot {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
   }
   .stranger-places {
     grid-template-columns: repeat(2, 1fr);
   }
-}
-@media (max-width: 1100px) {
   .stranger-gallery {
     grid-template-columns: 1fr 1fr;
   }
@@ -5868,6 +5988,10 @@ dialog::backdrop {
   }
   .stranger-book-card {
     position: static;
+    order: -1;
+  }
+  .stranger-price-board {
+    grid-template-columns: 1fr;
   }
 }
 @media (max-width: 900px) {
@@ -5884,23 +6008,161 @@ dialog::backdrop {
     max-height: 200px;
   }
   .stranger-snapshot {
-    grid-template-columns: 1fr 1fr;
-    margin-top: 18px;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(148px, 70%);
+    grid-template-columns: none;
+    overflow-x: auto;
+    gap: 10px;
+    margin-top: 14px;
+    padding-bottom: 4px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+  .stranger-snapshot article {
+    scroll-snap-align: start;
+    min-width: 148px;
+  }
+  .stranger-hero {
+    min-height: 62vh;
   }
   .stranger-hero-content {
-    padding: 100px 0 48px;
+    padding: 92px 0 36px;
+  }
+  .stranger-hero-content h1 {
+    font-size: clamp(30px, 8vw, 40px);
+  }
+  .stranger-hero-lead {
+    font-size: 14px;
+  }
+  .stranger-hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .stranger-hero-actions .button {
+    justify-content: center;
   }
   .stranger-home-mosaic {
-    min-height: 260px;
+    min-height: 240px;
+  }
+  .stranger-book-wrap {
+    padding-top: 18px;
+  }
+  .stranger-book-form {
+    padding: 16px;
+    gap: 14px;
+  }
+  .stranger-book-card-top {
+    padding: 18px 16px 14px;
+  }
+  .stranger-date-chips {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 2px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+  .stranger-date-chip {
+    min-width: 126px;
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+  }
+  .stranger-share-chips {
+    grid-template-columns: 1fr;
+  }
+  .stranger-share-chip {
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "label price"
+      "hint price";
+    align-items: center;
+    column-gap: 10px;
+  }
+  .stranger-share-chip .share-label { grid-area: label; }
+  .stranger-share-chip .share-price {
+    grid-area: price;
+    font-size: 18px;
+    justify-self: end;
+  }
+  .stranger-share-chip .share-hint { grid-area: hint; }
+  .stranger-field-optional {
+    display: none;
+  }
+  .stranger-gallery {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 4px;
+  }
+  .stranger-gallery figure {
+    flex: 0 0 78%;
+    min-height: 200px;
+    scroll-snap-align: start;
+  }
+  .stranger-mobile-bar {
+    position: fixed;
+    left: 12px;
+    right: 12px;
+    bottom: 14px;
+    z-index: 40;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 14px;
+    border-radius: 14px;
+    background: #183f35;
+    color: #fff;
+    box-shadow: 0 14px 30px rgba(16, 47, 40, 0.28);
+    text-decoration: none;
+  }
+  .stranger-mobile-bar span {
+    font-size: 13px;
+    line-height: 1.3;
+  }
+  .stranger-mobile-bar strong {
+    color: #e8f3c8;
+  }
+  .stranger-mobile-bar em {
+    font-style: normal;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 8px 12px;
+    border-radius: 999px;
+    background: #dcebb9;
+    color: #183f35;
+    white-space: nowrap;
+  }
+  .stranger-mobile-bar.is-hidden {
+    display: none;
+  }
+  body.stranger-page {
+    padding-bottom: 78px;
+  }
+  .whatsapp-float {
+    bottom: 78px;
   }
 }
 @media (max-width: 600px) {
-  .stranger-snapshot,
-  .stranger-places,
-  .stranger-gallery {
+  .stranger-places {
     grid-template-columns: 1fr;
   }
-  .stranger-date-chips {
-    grid-template-columns: 1fr;
+  .stranger-price-board article {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "label price"
+      "copy price";
+    text-align: left;
+    align-items: center;
+    gap: 2px 12px;
   }
+  .stranger-price-board span { grid-area: label; margin: 0; }
+  .stranger-price-board strong { grid-area: price; font-size: 20px; }
+  .stranger-price-board p { grid-area: copy; margin: 0; }
 }

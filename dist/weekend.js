@@ -106,6 +106,41 @@ export function strangerEnquireUrl(whatsappNumber, businessName) {
   });
 }
 
+/** Room-sharing price card for the Manali weekend stranger trip (INR / person). */
+export const STRANGER_SHARING = [
+  {
+    id: "quad",
+    label: "Quad sharing",
+    short: "Quad",
+    price: 6500,
+    hint: "4 per room · best value",
+  },
+  {
+    id: "double",
+    label: "Double sharing",
+    short: "Double",
+    price: 7000,
+    hint: "2 per room",
+  },
+  {
+    id: "single",
+    label: "Single sharing",
+    short: "Single",
+    price: 7500,
+    hint: "Private room",
+  },
+];
+
+export function formatInr(amount) {
+  return `₹${Number(amount).toLocaleString("en-IN")}`;
+}
+
+export function findSharing(id) {
+  return (
+    STRANGER_SHARING.find((option) => option.id === id) || STRANGER_SHARING[0]
+  );
+}
+
 /**
  * Build a WhatsApp enquiry with booking details.
  * @param {{
@@ -114,6 +149,7 @@ export function strangerEnquireUrl(whatsappNumber, businessName) {
  *   weekendId?: string,
  *   people?: number|string,
  *   pickup?: string,
+ *   sharing?: string,
  *   name?: string,
  *   note?: string,
  * }} options
@@ -124,16 +160,19 @@ export function strangerBookingUrl({
   weekendId,
   people,
   pickup,
+  sharing,
   name,
   note,
 } = {}) {
   const weekends = upcomingWeekends(8);
   const chosen =
     weekends.find((weekend) => weekend.id === weekendId) || weekends[0];
+  const share = findSharing(sharing);
   const peopleCount = Math.max(1, Math.min(12, Number(people) || 1));
   const pickupLabel = String(pickup || "").trim() || "Delhi NCR (to confirm)";
   const guestName = String(name || "").trim();
   const extraNote = String(note || "").trim();
+  const total = share.price * peopleCount;
 
   const lines = [
     `Hello ${businessName}! I want to book a seat on the Manali Weekend Stranger Trip.`,
@@ -142,7 +181,10 @@ export function strangerBookingUrl({
     `Friday leave: ${formatWeekendLong(chosen.friday)} · 10:00 PM`,
     `Monday return window: ${formatWeekendLong(chosen.monday)}`,
     `Travellers: ${peopleCount}`,
+    `Room sharing: ${share.label} · ${formatInr(share.price)} per person`,
+    `Approx total: ${formatInr(total)} (for ${peopleCount})`,
     `Pickup point: ${pickupLabel}`,
+    "Meals: Breakfast & dinner included",
   ];
 
   if (guestName) lines.push(`Name: ${guestName}`);
@@ -150,7 +192,7 @@ export function strangerBookingUrl({
 
   lines.push(
     "",
-    "Please confirm seat availability, exact pickup time, inclusions, and the host quote.",
+    "Please confirm seat availability, exact pickup time, and final booking details.",
   );
 
   return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(lines.join("\n"))}`;

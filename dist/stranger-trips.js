@@ -7,6 +7,9 @@ import {
   strangerBookingUrl,
   upcomingWeekends,
   STRANGER_PICKUPS,
+  STRANGER_SHARING,
+  findSharing,
+  formatInr,
 } from "./weekend.js";
 
 const $ = (selector, root = document) => root.querySelector(selector);
@@ -100,6 +103,7 @@ if (menuToggle && mobileNav) {
 /* ── Easy booking ── */
 const bookForm = $("#stranger-book-form");
 const dateChips = $("#stranger-date-chips");
+const shareChips = $("#stranger-share-chips");
 const peopleInput = $("#book-people");
 const pickupSelect = $("#book-pickup");
 const nameInput = $("#book-name");
@@ -108,6 +112,7 @@ const summary = $("#book-summary");
 
 const bookingState = {
   weekendId: "",
+  sharing: "quad",
   people: 1,
 };
 
@@ -115,6 +120,18 @@ function clampPeople(value) {
   const n = Number.parseInt(String(value), 10);
   if (!Number.isFinite(n)) return 1;
   return Math.max(1, Math.min(12, n));
+}
+
+function escapeHtml(value) {
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;");
+}
+
+function escapeAttr(value) {
+  return escapeHtml(value).replaceAll("'", "&#39;");
 }
 
 function renderPickupOptions() {
@@ -148,6 +165,19 @@ function renderDateChips({ keepSelection = false } = {}) {
     .join("");
 }
 
+function renderShareChips() {
+  if (!shareChips) return;
+  shareChips.innerHTML = STRANGER_SHARING.map((option) => {
+    const selected = option.id === bookingState.sharing;
+    return `<label class="stranger-share-chip${selected ? " is-selected" : ""}">
+      <input type="radio" name="sharing" value="${escapeAttr(option.id)}" ${selected ? "checked" : ""} />
+      <span class="share-label">${escapeHtml(option.label)}</span>
+      <span class="share-price">${escapeHtml(formatInr(option.price))}</span>
+      <span class="share-hint">${escapeHtml(option.hint)}</span>
+    </label>`;
+  }).join("");
+}
+
 function refreshBookableWeekends() {
   refreshWeekendLabels();
   if (!dateChips) return;
@@ -161,30 +191,24 @@ function updateSummary() {
   const chosen =
     weekends.find((weekend) => weekend.id === bookingState.weekendId) ||
     weekends[0];
+  const share = findSharing(bookingState.sharing);
   const people = clampPeople(peopleInput?.value || bookingState.people);
   bookingState.people = people;
   if (peopleInput) peopleInput.value = String(people);
   const pickup = String(pickupSelect?.value || "").trim();
-  summary.textContent = pickup
-    ? `${people} traveller${people === 1 ? "" : "s"} · ${chosen?.label || "upcoming weekend"} · pickup ${pickup}`
-    : `${people} traveller${people === 1 ? "" : "s"} · ${chosen?.label || "upcoming weekend"} · choose pickup to continue`;
-}
+  const total = formatInr(share.price * people);
 
-function escapeHtml(value) {
-  return String(value)
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;");
-}
-
-function escapeAttr(value) {
-  return escapeHtml(value).replaceAll("'", "&#39;");
+  summary.innerHTML = `
+    <p class="summary-total"><strong>${total}</strong> <span>approx for ${people} · ${escapeHtml(share.label)}</span></p>
+    <p class="summary-meta">${escapeHtml(chosen?.label || "upcoming weekend")} · ${formatInr(share.price)}/person · breakfast &amp; dinner</p>
+    <p class="summary-pickup">${pickup ? `Pickup: ${escapeHtml(pickup)}` : "Choose a pickup point to continue"}</p>
+  `;
 }
 
 if (bookForm && dateChips && peopleInput && pickupSelect) {
   renderPickupOptions();
   renderDateChips();
+  renderShareChips();
   updateSummary();
 
   const syncDateSelection = (weekendId) => {
@@ -198,17 +222,39 @@ if (bookForm && dateChips && peopleInput && pickupSelect) {
     updateSummary();
   };
 
+  const syncShareSelection = (sharingId) => {
+    bookingState.sharing = findSharing(sharingId).id;
+    $$(".stranger-share-chip", shareChips).forEach((chip) => {
+      const input = chip.querySelector('input[name="sharing"]');
+      const selected = input?.value === bookingState.sharing;
+      if (input) input.checked = Boolean(selected);
+      chip.classList.toggle("is-selected", Boolean(selected));
+    });
+    updateSummary();
+  };
+
   dateChips.addEventListener("change", (event) => {
     const input = event.target.closest('input[name="weekendId"]');
     if (!input) return;
     syncDateSelection(input.value);
   });
-
   dateChips.addEventListener("click", (event) => {
     const chip = event.target.closest(".stranger-date-chip");
     const input = chip?.querySelector('input[name="weekendId"]');
     if (!input) return;
     syncDateSelection(input.value);
+  });
+
+  shareChips?.addEventListener("change", (event) => {
+    const input = event.target.closest('input[name="sharing"]');
+    if (!input) return;
+    syncShareSelection(input.value);
+  });
+  shareChips?.addEventListener("click", (event) => {
+    const chip = event.target.closest(".stranger-share-chip");
+    const input = chip?.querySelector('input[name="sharing"]');
+    if (!input) return;
+    syncShareSelection(input.value);
   });
 
   peopleInput.addEventListener("input", updateSummary);
@@ -235,7 +281,10 @@ if (bookForm && dateChips && peopleInput && pickupSelect) {
     if (!pickup) {
       pickupSelect.focus();
       pickupSelect.setAttribute("aria-invalid", "true");
-      summary.textContent = "Choose a pickup point so the host can plan boarding.";
+      const pickupLine = summary.querySelector(".summary-pickup");
+      if (pickupLine) {
+        pickupLine.textContent = "Choose a pickup point so the host can plan boarding.";
+      }
       return;
     }
     pickupSelect.removeAttribute("aria-invalid");
@@ -245,15 +294,33 @@ if (bookForm && dateChips && peopleInput && pickupSelect) {
       weekendId: bookingState.weekendId,
       people,
       pickup,
+      sharing: bookingState.sharing,
       name: nameInput?.value,
       note: noteInput?.value,
     });
     window.open(url, "_blank", "noopener,noreferrer");
   });
 
-  // Drop a Friday batch automatically after Saturday 01:00, even if the tab stays open.
   document.addEventListener("visibilitychange", () => {
     if (document.visibilityState === "visible") refreshBookableWeekends();
   });
   window.setInterval(refreshBookableWeekends, 60_000);
+}
+
+/* Mobile sticky book bar */
+const stickyBar = document.createElement("a");
+stickyBar.className = "stranger-mobile-bar";
+stickyBar.href = "#book";
+stickyBar.innerHTML = `<span>From <strong>₹6,500</strong> · meals included</span><em>Book seat</em>`;
+document.body.appendChild(stickyBar);
+
+const bookSection = $("#book");
+if (bookSection && "IntersectionObserver" in window) {
+  const io = new IntersectionObserver(
+    ([entry]) => {
+      stickyBar.classList.toggle("is-hidden", entry.isIntersecting);
+    },
+    { threshold: 0.2 },
+  );
+  io.observe(bookSection);
 }

@@ -101,102 +101,63 @@
             <a class="button outline light-outline" href="#gallery">See the places</a>
           </div>
           <ul class="stranger-hero-tags" aria-label="Trip facts">
-            <li>3N / 4D weekend</li>
+            <li>From ₹6,500 / person</li>
+            <li>Breakfast &amp; dinner</li>
             <li>Solo-friendly</li>
             <li>Delhi NCR pickup</li>
-            <li>Host quote on WhatsApp</li>
           </ul>
         </div>
       </section>
 
       <div class="stranger-snapshot container" aria-label="Trip snapshot">
         <article>
-          <span>Next departure</span>
-          <strong data-next-weekend>Upcoming weekend</strong>
+          <span>From</span>
+          <strong>₹6,500 / person</strong>
         </article>
         <article>
-          <span>Duration</span>
-          <strong>Fri night → Mon</strong>
+          <span>Meals</span>
+          <strong>Breakfast + dinner</strong>
+        </article>
+        <article>
+          <span>Next departure</span>
+          <strong data-next-weekend>Upcoming weekend</strong>
         </article>
         <article>
           <span>Leave Delhi</span>
           <strong>Friday 10:00 PM</strong>
         </article>
-        <article>
-          <span>Return start</span>
-          <strong>Sunday 9:00 PM</strong>
-        </article>
-        <article>
-          <span>Group vibe</span>
-          <strong>Shared seats · new people</strong>
-        </article>
-        <article>
-          <span>Style</span>
-          <strong>Sightseeing only</strong>
-        </article>
       </div>
 
       <section class="section container stranger-book-wrap" id="book" aria-labelledby="book-title">
         <div class="stranger-book-layout">
-          <div class="stranger-book-story">
-            <div class="section-heading">
-              <div>
-                <p class="eyebrow">EASY BOOKING</p>
-                <h2 id="book-title">Hold your seat in<br /><em>three clear details.</em></h2>
-              </div>
-              <p class="section-intro">
-                Pick a weekend, tell us how many people, and choose a Delhi NCR pickup.
-                We open WhatsApp with everything ready — the host confirms seats and quote.
-              </p>
-            </div>
-
-            <div class="stranger-highlights" aria-label="Trip highlights">
-              <article>
-                <strong>Come solo or with friends</strong>
-                <p>Most guests join alone. Small groups are welcome — seats confirmed before you travel.</p>
-              </article>
-              <article>
-                <strong>Fixed weekend rhythm</strong>
-                <p>Friday 10 PM leave · Manali sightseeing · Sunday 9 PM return start · every weekend.</p>
-              </article>
-              <article>
-                <strong>Pickup near you</strong>
-                <p>Delhi, Gurugram, Noida, Ghaziabad, Faridabad or Chandigarh — exact time shared after booking.</p>
-              </article>
-              <article>
-                <strong>No surprise pressure</strong>
-                <p>Sightseeing-first plan. Paid adventure activities stay optional and out of the package promise.</p>
-              </article>
-            </div>
-
-            <ol class="stranger-book-steps">
-              <li><span>01</span><div><strong>Choose your weekend</strong><p>Upcoming Friday departures are listed — same route every week.</p></div></li>
-              <li><span>02</span><div><strong>Add people &amp; pickup</strong><p>Tell us travellers and your preferred boarding point in Delhi NCR.</p></div></li>
-              <li><span>03</span><div><strong>WhatsApp the host</strong><p>One tap sends a ready message. Seat + quote confirmed before you go.</p></div></li>
-            </ol>
-          </div>
-
           <aside class="stranger-book-card" aria-labelledby="book-card-title">
             <div class="stranger-book-card-top">
               <p class="eyebrow">MANALI WEEKEND</p>
+              <h2 id="book-title" class="sr-only">Book your Manali weekend seat</h2>
               <h3 id="book-card-title">Book your seat</h3>
               <p class="stranger-book-price">
-                <span>Host quote</span>
-                <strong>on WhatsApp</strong>
+                <span>from</span>
+                <strong>₹6,500</strong>
+                <em>/ person</em>
               </p>
               <p class="stranger-book-card-note">
-                Next open window: <strong data-next-weekend>upcoming weekend</strong>
+                Breakfast &amp; dinner included · Next: <strong data-next-weekend>upcoming weekend</strong>
               </p>
             </div>
 
             <form id="stranger-book-form" class="stranger-book-form" novalidate>
               <fieldset class="stranger-date-field">
-                <legend>Select departure weekend</legend>
+                <legend>1. Departure weekend</legend>
                 <div id="stranger-date-chips" class="stranger-date-chips" role="radiogroup" aria-label="Departure weekends"></div>
               </fieldset>
 
+              <fieldset class="stranger-share-field">
+                <legend>2. Room sharing</legend>
+                <div id="stranger-share-chips" class="stranger-share-chips" role="radiogroup" aria-label="Room sharing options"></div>
+              </fieldset>
+
               <label class="stranger-field">
-                <span>Number of people</span>
+                <span>3. Number of people</span>
                 <div class="stranger-people-row">
                   <button type="button" class="stranger-stepper" data-people-step="-1" aria-label="Fewer people">−</button>
                   <input
@@ -212,37 +173,96 @@
                   />
                   <button type="button" class="stranger-stepper" data-people-step="1" aria-label="More people">+</button>
                 </div>
-                <small id="book-people-hint">1–12 travellers on this enquiry</small>
+                <small id="book-people-hint">Price shown is per person for your sharing type</small>
               </label>
 
               <label class="stranger-field">
-                <span>Where should we pick you up?</span>
+                <span>4. Pickup point</span>
                 <select id="book-pickup" name="pickup" required>
                   <option value="">Choose a pickup point</option>
                 </select>
               </label>
 
-              <label class="stranger-field">
+              <label class="stranger-field stranger-field-optional">
                 <span>Your name <em class="optional">(optional)</em></span>
                 <input id="book-name" name="name" type="text" autocomplete="name" placeholder="So the host can greet you" maxlength="80" />
               </label>
 
-              <label class="stranger-field">
-                <span>Anything to add? <em class="optional">(optional)</em></span>
-                <textarea id="book-note" name="note" rows="2" maxlength="240" placeholder="Friends travelling together, preferred metro, luggage…"></textarea>
+              <label class="stranger-field stranger-field-optional">
+                <span>Note <em class="optional">(optional)</em></span>
+                <textarea id="book-note" name="note" rows="2" maxlength="240" placeholder="Friends travelling together, metro preference…"></textarea>
               </label>
 
-              <p id="book-summary" class="stranger-book-summary" aria-live="polite"></p>
+              <div id="book-summary" class="stranger-book-summary" aria-live="polite"></div>
 
               <button type="submit" class="button lime stranger-book-submit">
                 Continue on WhatsApp
                 <svg class="icon"><use href="#arrow-up" /></svg>
               </button>
               <p class="stranger-book-fine">
-                No payment on this page. Your host confirms availability, inclusions and price before any booking.
+                No payment on this page. Host confirms seats, then you pay as agreed.
               </p>
             </form>
           </aside>
+
+          <div class="stranger-book-story">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">WHAT YOU GET</p>
+                <h2>Clear price.<br /><em>Clear weekend plan.</em></h2>
+              </div>
+              <p class="section-intro">
+                Pick a weekend, choose room sharing, add travellers and pickup —
+                WhatsApp opens with a ready booking message.
+              </p>
+            </div>
+
+            <div class="stranger-price-board" aria-label="Sharing prices">
+              <article>
+                <span>Quad sharing</span>
+                <strong>₹6,500</strong>
+                <p>per person · 4 in a room</p>
+              </article>
+              <article>
+                <span>Double sharing</span>
+                <strong>₹7,000</strong>
+                <p>per person · 2 in a room</p>
+              </article>
+              <article>
+                <span>Single sharing</span>
+                <strong>₹7,500</strong>
+                <p>per person · private room</p>
+              </article>
+            </div>
+
+            <ul class="stranger-include-pills" aria-label="Package includes">
+              <li>Breakfast included</li>
+              <li>Dinner included</li>
+              <li>Hotel night in Manali</li>
+              <li>Shared coach travel</li>
+              <li>Sightseeing circuit</li>
+              <li>Delhi NCR pickup</li>
+            </ul>
+
+            <div class="stranger-highlights" aria-label="Trip highlights">
+              <article>
+                <strong>Come solo or with friends</strong>
+                <p>Most guests join alone. Small groups are welcome.</p>
+              </article>
+              <article>
+                <strong>Fixed Fri–Mon rhythm</strong>
+                <p>Friday 10 PM leave · Sunday 9 PM return start.</p>
+              </article>
+              <article>
+                <strong>Pickup near you</strong>
+                <p>Delhi, Gurugram, Noida, Ghaziabad, Faridabad or Chandigarh.</p>
+              </article>
+              <article>
+                <strong>No adventure pressure</strong>
+                <p>Sightseeing-first. Paid activities stay optional.</p>
+              </article>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -458,8 +478,9 @@
             <p class="eyebrow">BEFORE YOU JOIN</p>
             <h2 id="include-title">Clear expectations.<br /><em>Honest hosting.</em></h2>
             <p>
-              Final inclusions, seat type and price are confirmed on WhatsApp for your chosen weekend.
-              Hotel early check-in / Sunday late checkout or day-use rooms are arranged as part of the operating plan.
+              Prices start at <strong>₹6,500</strong> (quad), <strong>₹7,000</strong> (double) and
+              <strong>₹7,500</strong> (single) per person. Breakfast and dinner are included.
+              Hotel early check-in / Sunday day-use are part of the operating plan.
             </p>
             <a class="button primary" href="#book">
               Book seats for next weekend
@@ -468,9 +489,10 @@
           </div>
           <div class="stranger-lists">
             <div>
-              <h3>Typically planned</h3>
+              <h3>Included</h3>
               <ul>
-                <li><svg class="icon"><use href="#check" /></svg> Shared private coach / Tempo Traveller class vehicle</li>
+                <li><svg class="icon"><use href="#check" /></svg> Breakfast and dinner</li>
+                <li><svg class="icon"><use href="#check" /></svg> Shared coach / Tempo Traveller class vehicle</li>
                 <li><svg class="icon"><use href="#check" /></svg> Delhi NCR pickup coordination</li>
                 <li><svg class="icon"><use href="#check" /></svg> One hotel night in Manali + sightseeing circuit</li>
                 <li><svg class="icon"><use href="#check" /></svg> Experienced mountain-route driver plan</li>
@@ -505,8 +527,8 @@
           <p class="eyebrow">EVERY WEEKEND · DELHI NCR → MANALI</p>
           <h2>Ready to join<br /><em>strangers on the road?</em></h2>
           <p>
-            Next departure: <strong data-next-weekend>upcoming weekend</strong>
-            · Friday 10:00 PM from Delhi NCR.
+            From <strong>₹6,500</strong>/person · breakfast &amp; dinner included ·
+            next: <strong data-next-weekend>upcoming weekend</strong>.
           </p>
           <a class="button lime" href="#book">
             Book a seat now
