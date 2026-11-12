@@ -5,15 +5,18 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 
 const root = fileURLToPath(new URL("..", import.meta.url));
 const dist = path.join(root, "dist");
-const release = path.join(root, "release");
+/** Vercel default Output Directory is `public`. Keep `release` as an alias copy. */
+const outDirName = "public";
+const out = path.join(root, outDirName);
+const releaseAlias = path.join(root, "release");
 
 const { siteConfig } = await import(
   pathToFileURL(path.join(dist, "site-config.js")).href
 );
 
-await rm(release, { recursive: true, force: true });
-await mkdir(release, { recursive: true });
-await cp(path.join(dist, "assets"), path.join(release, "assets"), {
+await rm(out, { recursive: true, force: true });
+await mkdir(out, { recursive: true });
+await cp(path.join(dist, "assets"), path.join(out, "assets"), {
   recursive: true,
 });
 
@@ -22,7 +25,7 @@ await build({
   bundle: true,
   format: "esm",
   minify: true,
-  outfile: path.join(release, "app.js"),
+  outfile: path.join(out, "app.js"),
   logLevel: "silent",
 });
 
@@ -30,7 +33,7 @@ await build({
   entryPoints: [path.join(dist, "styles.css")],
   bundle: false,
   minify: true,
-  outfile: path.join(release, "styles.css"),
+  outfile: path.join(out, "styles.css"),
   logLevel: "silent",
   allowOverwrite: true,
 });
@@ -46,7 +49,7 @@ async function publishHtml(fileName) {
     `<meta name="robots" content="${robotsContent}" />`,
   );
   html = html.replaceAll("https://www.example.com", siteConfig.origin);
-  await writeFile(path.join(release, fileName), html);
+  await writeFile(path.join(out, fileName), html);
 }
 
 await publishHtml("index.html");
@@ -57,18 +60,18 @@ await build({
   bundle: true,
   format: "esm",
   minify: true,
-  outfile: path.join(release, "stranger-trips.js"),
+  outfile: path.join(out, "stranger-trips.js"),
   logLevel: "silent",
 });
 
 const robots = siteConfig.allowIndexing
   ? `User-agent: *\nAllow: /\n\nSitemap: ${siteConfig.origin}/sitemap.xml\n`
   : `User-agent: *\nDisallow: /\n\nSitemap: ${siteConfig.origin}/sitemap.xml\n`;
-await writeFile(path.join(release, "robots.txt"), robots);
+await writeFile(path.join(out, "robots.txt"), robots);
 
 const today = new Date().toISOString().slice(0, 10);
 await writeFile(
-  path.join(release, "sitemap.xml"),
+  path.join(out, "sitemap.xml"),
   `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
@@ -87,6 +90,9 @@ await writeFile(
 `,
 );
 
+await rm(releaseAlias, { recursive: true, force: true });
+await cp(out, releaseAlias, { recursive: true });
+
 process.stdout.write(
-  `Built release/ for ${siteConfig.origin} (indexing ${siteConfig.allowIndexing ? "on" : "off"})\n`,
+  `Built ${outDirName}/ (and release/) for ${siteConfig.origin} (indexing ${siteConfig.allowIndexing ? "on" : "off"})\n`,
 );
