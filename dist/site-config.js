@@ -76,5 +76,5 @@ export const siteConfig = {
    * Optional Google Analytics 4 ID (G-XXXXXXXX). Empty = no analytics script.
    * Enable only after privacy wording is approved.
    */
-  gaMeasurementId: "",
+  gaMeasurementId: "G-7N8MZ7Q4X4",
 };
