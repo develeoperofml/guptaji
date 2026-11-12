@@ -11,7 +11,7 @@
     "build": "node scripts/build.mjs"
   },
   "engines": {
-    "node": "20.x"
+    "node": "26.x"
   },
   "devDependencies": {
     "esbuild": "^0.28.2"
