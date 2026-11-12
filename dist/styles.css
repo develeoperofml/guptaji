@@ -29,6 +29,7 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 35px;
+  overflow-x: clip;
 }
 body {
   margin: 0;
@@ -36,6 +37,8 @@ body {
   background: #fff;
   font: 400 14px/1.65 var(--font);
   -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+  max-width: 100%;
 }
 body.dialog-open {
   overflow: hidden;
@@ -4227,6 +4230,24 @@ dialog::backdrop {
 @media (max-width: 700px) {
   .container {
     width: calc(100% - 40px);
+    max-width: 100%;
+    min-width: 0;
+  }
+  main,
+  .section,
+  .search-wrap,
+  .finder-panel,
+  .india-services,
+  .stranger-home {
+    max-width: 100%;
+    min-width: 0;
+    overflow-x: clip;
+  }
+  .finder-price,
+  .finder-card,
+  .section-heading h2 {
+    overflow-wrap: anywhere;
+    word-break: break-word;
   }
   .brand-type {
     font-size: 23px;
@@ -4352,17 +4373,20 @@ dialog::backdrop {
     gap: 40px;
   }
   .promise-strip {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 10px;
-    overflow-x: auto;
     padding: 18px 0 14px;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow: visible;
   }
   .promise-strip p,
   .promise-strip p:last-child {
-    flex: 0 0 min(72vw, 240px);
-    scroll-snap-align: start;
+    flex: none;
+    width: auto;
+    min-width: 0;
     font-size: 12px;
   }
   .promise-strip p .icon {
@@ -4372,7 +4396,10 @@ dialog::backdrop {
   .region-chips,
   .region-cities {
     flex-wrap: nowrap;
+    max-width: 100%;
+    min-width: 0;
     overflow-x: auto;
+    overscroll-behavior-x: contain;
     padding-bottom: 4px;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
@@ -5138,35 +5165,38 @@ dialog::backdrop {
     padding: 56px 0 44px;
   }
   .india-pillars,
-  .india-experience-grid {
+  .india-experience-grid,
+  .fleet-grid {
     grid-template-columns: 1fr;
   }
   .fleet-grid {
-    display: flex;
+    display: grid;
     gap: 12px;
-    overflow-x: auto;
-    padding-bottom: 6px;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow: visible;
   }
   .fleet-card {
-    flex: 0 0 min(78vw, 280px);
-    scroll-snap-align: start;
+    flex: none;
+    width: auto;
+    min-width: 0;
   }
   .fleet-card:last-child {
     grid-column: auto;
   }
   .india-experience-grid {
-    display: flex;
+    display: grid;
     gap: 12px;
-    overflow-x: auto;
-    padding-bottom: 6px;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow: visible;
   }
   .india-experience {
-    flex: 0 0 min(82vw, 300px);
-    scroll-snap-align: start;
+    flex: none;
+    width: auto;
+    min-width: 0;
   }
   .india-pillar h3,
   .india-experience h3 {
@@ -5176,30 +5206,41 @@ dialog::backdrop {
     font-size: 24px;
   }
   .journey-search.trip-finder {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
     gap: 14px;
     padding: 16px;
+    min-width: 0;
+    max-width: 100%;
   }
   .search-field {
     border-right: 0;
     border-bottom: 1px solid var(--line);
     padding-right: 0;
     padding-bottom: 12px;
+    min-width: 0;
   }
   .search-field:last-of-type {
     border-bottom: 0;
   }
   .vehicle-rate-grid {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 10px;
-    overflow-x: auto;
-    padding-bottom: 4px;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow: visible;
   }
   .vehicle-rate {
-    flex: 0 0 min(70vw, 220px);
-    scroll-snap-align: start;
+    flex: none;
+    width: auto;
+    min-width: 0;
+  }
+  .finder-panel,
+  .search-wrap,
+  .finder-trust {
+    min-width: 0;
+    max-width: 100%;
   }
   .search-submit {
     width: 100%;
@@ -5215,7 +5256,7 @@ dialog::backdrop {
     width: 100%;
   }
 }
-@media (max-width: 980px) {
+@media (min-width: 701px) and (max-width: 980px) {
   .vehicle-rate-grid {
     grid-template-columns: 1fr 1fr;
   }
@@ -6269,7 +6310,7 @@ dialog::backdrop {
     position: fixed;
     left: 12px;
     right: 12px;
-    bottom: 14px;
+    bottom: calc(12px + env(safe-area-inset-bottom, 0px));
     z-index: 40;
     display: flex;
     align-items: center;
@@ -6281,6 +6322,8 @@ dialog::backdrop {
     color: #fff;
     box-shadow: 0 14px 30px rgba(16, 47, 40, 0.28);
     text-decoration: none;
+    max-width: calc(100vw - 24px);
+    box-sizing: border-box;
   }
   .home-mobile-bar span,
   .stranger-mobile-bar span {
@@ -6310,10 +6353,10 @@ dialog::backdrop {
   }
   body.home-page,
   body.stranger-page {
-    padding-bottom: 78px;
+    padding-bottom: calc(88px + env(safe-area-inset-bottom, 0px));
   }
   .whatsapp-float {
-    bottom: 78px;
+    bottom: calc(84px + env(safe-area-inset-bottom, 0px));
   }
 }
 @media (max-width: 600px) {
