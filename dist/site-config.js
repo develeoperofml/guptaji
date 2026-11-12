@@ -10,6 +10,9 @@ export const siteConfig = {
   allowIndexing: false,
   whatsappNumber: "919602970369",
   whatsappDisplay: "+91 96029 70369",
+  /** Same business line for direct calls from mobile. */
+  phoneTel: "+919602970369",
+  phoneDisplay: "+91 96029 70369",
   /**
    * Monitored support inbox. Enables email fallback beside WhatsApp.
    */

@@ -745,6 +745,16 @@ if (supportHours) {
     : "";
   supportHours.textContent = `Enquiries: ${siteConfig.supportHours} · English${emailBit}`;
 }
+const phoneTel = siteConfig.phoneTel || `+${whatsappNumber}`;
+const phoneDisplay = siteConfig.phoneDisplay || siteConfig.whatsappDisplay;
+const callFloat = $("#call-float");
+if (callFloat) {
+  callFloat.href = `tel:${phoneTel}`;
+  callFloat.setAttribute(
+    "aria-label",
+    `Call ${siteConfig.businessName} at ${phoneDisplay}`,
+  );
+}
 const whatsappFloat = $("#whatsapp-float");
 if (whatsappFloat) {
   whatsappFloat.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(`Hello ${siteConfig.businessName}! I would like to plan a trip.`)}`;
@@ -760,6 +770,11 @@ $$('a[href^="https://wa.me/"]').forEach((link) => {
     }
   }
 });
+$$('a[href^="tel:"]').forEach((link) => {
+  link.href = `tel:${phoneTel}`;
+  const label = link.querySelector(".footer-social-label");
+  if (label) label.textContent = `Call ${phoneDisplay}`;
+});
 
 function setFooterSocial(link, href, labelText) {
   if (!link || !href) return;
@@ -768,6 +783,11 @@ function setFooterSocial(link, href, labelText) {
   if (label) label.textContent = labelText;
 }
 
+setFooterSocial(
+  $("#footer-call"),
+  `tel:${phoneTel}`,
+  `Call ${phoneDisplay}`,
+);
 setFooterSocial(
   $("#footer-email"),
   siteConfig.enquiryEmail ? `mailto:${siteConfig.enquiryEmail}` : "",
@@ -786,7 +806,10 @@ setFooterSocial(
 
 $$(".footer-social-chip").forEach((chip) => {
   const label = (chip.getAttribute("aria-label") || "").toLowerCase();
-  if (label.includes("email") && siteConfig.enquiryEmail) {
+  if (label.includes("call") || label.startsWith("call ")) {
+    chip.href = `tel:${phoneTel}`;
+    chip.setAttribute("aria-label", `Call ${phoneDisplay}`);
+  } else if (label.includes("email") && siteConfig.enquiryEmail) {
     chip.href = `mailto:${siteConfig.enquiryEmail}`;
     chip.setAttribute("aria-label", `Email ${siteConfig.enquiryEmail}`);
   } else if (label.includes("whatsapp")) {
