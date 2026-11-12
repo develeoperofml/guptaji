@@ -1,6 +1,8 @@
-# Preview / staging: keep the site out of search until content is approved.
-# At launch: set Allow: / , remove Disallow: / , and keep the Sitemap line.
 User-agent: *
-Disallow: /
+Allow: /
 
-Sitemap: https://www.example.com/sitemap.xml
+# Keep planner/dialog fragments out of crawl noise if linked with query params
+Disallow: /*?*utm_
+Disallow: /*?*fbclid=
+
+Sitemap: https://guptajitourtravel.cognivx.com/sitemap.xml

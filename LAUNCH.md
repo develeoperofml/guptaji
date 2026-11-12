@@ -24,12 +24,17 @@ Use this before making the site public. Items marked **Done in code** are alread
 
 ## Phase 2 — Flip to public SEO
 
-- [ ] Set `allowIndexing: true` in `dist/site-config.js`
-- [ ] Remove `noindex, nofollow` from `dist/index.html` (or let the build inject from config)
-- [ ] Update `robots.txt` to `Allow: /` and point to the live sitemap
-- [ ] Update absolute URLs in Open Graph, Twitter, schema, and `sitemap.xml`
-- [ ] Submit sitemap in Google Search Console / Bing Webmaster Tools
-- [ ] Add a real social share image on the production domain
+- [x] Set `allowIndexing: true` in `dist/site-config.js` (live: `https://guptajitourtravel.cognivx.com`)
+- [x] Indexable robots meta via build (`index, follow…`)
+- [x] `robots.txt` Allow + sitemap; `sitemap.xml` for home + stranger trips
+- [x] Absolute Open Graph / Twitter / canonical / hreflang URLs
+- [x] TravelAgency + LocalBusiness + FAQPage + Product / TouristTrip JSON-LD
+- [x] Web app manifest, humans.txt, security/cache headers on Vercel
+- [ ] **You:** Google Search Console → Add URL property → paste verification into `googleSiteVerification` → rebuild → Submit `sitemap.xml`
+- [ ] **You:** Bing Webmaster Tools → import from Google or submit sitemap
+- [ ] **You:** Claim / complete Google Business Profile (Travel Agency, Jaipur) with matching NAP + photos + reviews
+- [ ] Optional: set `gaMeasurementId` (GA4) only after privacy wording is approved
+- [ ] Optional: export a 1200×630 JPG share card (OG prefers JPG on some older apps; WebP works on modern networks)
 
 ## Phase 3 — International readiness
 
