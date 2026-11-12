@@ -483,11 +483,35 @@ h1 em {
   color: #f3f4ef;
 }
 .hero .button {
-  margin-top: 27px;
+  margin-top: 0;
   padding-inline: 22px;
   gap: 40px;
   min-height: 49px;
   font-size: 11px;
+}
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 27px;
+}
+.hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 20px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.hero-tags li {
+  padding: 7px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 999px;
+  background: rgba(10, 30, 24, 0.28);
+  color: #f3f7ea;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
 }
 .hero-bottom {
   position: absolute;
@@ -920,28 +944,46 @@ h1 em {
   margin: 0;
 }
 .promise-strip {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  padding: 28px 25px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  align-items: stretch;
+  padding: 22px 0;
   border-bottom: 1px solid var(--line);
 }
 .promise-strip p {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto auto;
+  column-gap: 10px;
+  row-gap: 2px;
   align-items: center;
-  gap: 10px;
+  margin: 0;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fafbf7;
   font-size: 10px;
   color: #4d6357;
 }
 .promise-strip p .icon {
+  grid-row: 1 / span 2;
   width: 18px;
   height: 18px;
+  stroke: var(--green);
+}
+.promise-strip p strong {
+  font-size: 12px;
+  color: var(--ink);
+  letter-spacing: 0.02em;
+}
+.promise-strip p span {
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.35;
 }
 .promise-strip > span {
-  width: 3px;
-  height: 3px;
-  border-radius: 50%;
-  background: #b6c4b7;
+  display: none;
 }
 .section-heading {
   display: flex;
@@ -2619,11 +2661,11 @@ dialog::backdrop {
     margin-top: -35px;
   }
   .promise-strip {
-    padding: 27px 0;
+    padding: 22px 0;
+    gap: 12px;
   }
   .promise-strip p {
-    font-size: 8px;
-    gap: 7px;
+    padding: 10px 12px;
   }
   .promise-strip p .icon {
     width: 16px;
@@ -3023,19 +3065,16 @@ dialog::backdrop {
     gap: 55px;
   }
   .promise-strip {
-    padding: 24px 0;
-    gap: 14px;
+    padding: 20px 0;
+    gap: 12px;
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
   .promise-strip p {
-    font-size: 8px;
-    gap: 7px;
-    line-height: 1.6;
+    line-height: 1.45;
   }
   .promise-strip p:last-child {
-    grid-column: 1/-1;
-    justify-content: center;
+    grid-column: auto;
   }
   .promise-strip p .icon {
     width: 15px;
@@ -4205,24 +4244,29 @@ dialog::backdrop {
     display: none;
   }
   .hero {
-    height: 585px;
+    height: auto;
+    min-height: 640px;
   }
   .hero-content {
     padding-top: 66px;
+    padding-bottom: 88px;
   }
   .hero-eyebrow {
     font-size: 9px;
     letter-spacing: 1px;
     gap: 8px;
     max-width: 300px;
+    margin-bottom: 18px;
   }
   .hero h1 {
-    font-size: 45px;
+    font-size: clamp(34px, 9vw, 45px);
+    letter-spacing: -1.6px;
   }
   .hero-description {
     font-size: 14px;
-    line-height: 1.8;
-    margin-top: 24px;
+    line-height: 1.7;
+    margin-top: 16px;
+    max-width: 34ch;
   }
   .hero-description br {
     display: none;
@@ -4231,7 +4275,21 @@ dialog::backdrop {
     font-size: 13px;
     min-height: 48px;
     gap: 25px;
-    margin-top: 26px;
+    margin-top: 0;
+    justify-content: center;
+  }
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+    margin-top: 22px;
+  }
+  .hero-tags {
+    margin-top: 16px;
+    gap: 6px;
+  }
+  .hero-tags li {
+    font-size: 10px;
+    padding: 6px 10px;
   }
   .hero-location {
     font-size: 12px;
@@ -4240,11 +4298,14 @@ dialog::backdrop {
     width: 16px;
     height: 16px;
   }
+  .hero-location > span {
+    display: none;
+  }
   .hero-index {
     display: none;
   }
   .hero-bottom {
-    bottom: 71px;
+    bottom: 56px;
   }
   .journey-search {
     display: grid;
@@ -4292,20 +4353,35 @@ dialog::backdrop {
   }
   .promise-strip {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 15px;
-    padding: 25px 12px;
+    gap: 10px;
+    overflow-x: auto;
+    padding: 18px 0 14px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
   }
   .promise-strip p,
   .promise-strip p:last-child {
+    flex: 0 0 min(72vw, 240px);
+    scroll-snap-align: start;
     font-size: 12px;
-    justify-content: flex-start;
-    gap: 12px;
   }
   .promise-strip p .icon {
     width: 19px;
     height: 19px;
+  }
+  .region-chips,
+  .region-cities {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+  .region-chips button,
+  .region-cities button {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    min-height: 40px;
   }
   .eyebrow,
   .section-heading .eyebrow {
@@ -5059,15 +5135,38 @@ dialog::backdrop {
 }
 @media (max-width: 700px) {
   .india-services {
-    padding: 64px 0 52px;
+    padding: 56px 0 44px;
   }
   .india-pillars,
-  .india-experience-grid,
-  .fleet-grid {
+  .india-experience-grid {
     grid-template-columns: 1fr;
+  }
+  .fleet-grid {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    padding-bottom: 6px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+  .fleet-card {
+    flex: 0 0 min(78vw, 280px);
+    scroll-snap-align: start;
   }
   .fleet-card:last-child {
     grid-column: auto;
+  }
+  .india-experience-grid {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    padding-bottom: 6px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+  .india-experience {
+    flex: 0 0 min(82vw, 300px);
+    scroll-snap-align: start;
   }
   .india-pillar h3,
   .india-experience h3 {
@@ -5091,11 +5190,29 @@ dialog::backdrop {
     border-bottom: 0;
   }
   .vehicle-rate-grid {
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+  .vehicle-rate {
+    flex: 0 0 min(70vw, 220px);
+    scroll-snap-align: start;
   }
   .search-submit {
     width: 100%;
     justify-content: center;
+  }
+  .finder-trust {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .finder-trust .button {
+    grid-column: auto;
+    justify-self: stretch;
+    width: 100%;
   }
 }
 @media (max-width: 980px) {
@@ -5785,6 +5902,35 @@ dialog::backdrop {
   margin-top: 4px;
   font-size: 12px !important;
 }
+.stranger-home-price-board {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin: 18px 0 0;
+}
+.stranger-home-price-board article {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 12px 10px;
+  text-align: center;
+}
+.stranger-home-price-board span {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+.stranger-home-price-board strong {
+  display: block;
+  font-size: 20px;
+  color: var(--green);
+  letter-spacing: -0.4px;
+}
+.home-mobile-bar,
 .stranger-mobile-bar {
   display: none;
 }
@@ -6045,6 +6191,22 @@ dialog::backdrop {
   .stranger-home-mosaic {
     min-height: 240px;
   }
+  .stranger-home-price-board {
+    gap: 8px;
+  }
+  .stranger-home-price-board article {
+    padding: 12px 8px;
+  }
+  .stranger-home-price-board strong {
+    font-size: 18px;
+  }
+  .stranger-home-actions {
+    flex-direction: column;
+  }
+  .stranger-home-actions .button {
+    justify-content: center;
+    width: 100%;
+  }
   .stranger-book-wrap {
     padding-top: 18px;
   }
@@ -6102,6 +6264,7 @@ dialog::backdrop {
     min-height: 200px;
     scroll-snap-align: start;
   }
+  .home-mobile-bar,
   .stranger-mobile-bar {
     position: fixed;
     left: 12px;
@@ -6119,13 +6282,16 @@ dialog::backdrop {
     box-shadow: 0 14px 30px rgba(16, 47, 40, 0.28);
     text-decoration: none;
   }
+  .home-mobile-bar span,
   .stranger-mobile-bar span {
     font-size: 13px;
     line-height: 1.3;
   }
+  .home-mobile-bar strong,
   .stranger-mobile-bar strong {
     color: #e8f3c8;
   }
+  .home-mobile-bar em,
   .stranger-mobile-bar em {
     font-style: normal;
     font-size: 12px;
@@ -6138,9 +6304,11 @@ dialog::backdrop {
     color: #183f35;
     white-space: nowrap;
   }
+  .home-mobile-bar.is-hidden,
   .stranger-mobile-bar.is-hidden {
     display: none;
   }
+  body.home-page,
   body.stranger-page {
     padding-bottom: 78px;
   }

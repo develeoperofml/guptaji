@@ -80,7 +80,7 @@
     </script>
     <script type="module" src="app.js"></script>
   </head>
-  <body>
+  <body class="home-page">
     <a class="skip-link" href="#main">Skip to content</a>
     <svg
       class="icon-library"
@@ -243,10 +243,21 @@
             Private cabs and custom packages from our Jaipur base — to
             Rajasthan, hills, heritage cities, and beyond.
           </p>
-          <a class="button light" href="#trip-finder"
-            >Plan pickup &amp; drop
-            <svg class="icon"><use href="#arrow-up" /></svg
-          ></a>
+          <div class="hero-actions">
+            <a class="button light" href="#trip-finder"
+              >Plan pickup &amp; drop
+              <svg class="icon"><use href="#arrow-up" /></svg
+            ></a>
+            <a class="button outline light-outline" href="stranger-trips.html#book"
+              >Manali weekend from ₹6,500</a
+            >
+          </div>
+          <ul class="hero-tags" aria-label="What we offer">
+            <li>Private cabs</li>
+            <li>Any India route</li>
+            <li>Host quote on WhatsApp</li>
+            <li>Sedan to Urbania</li>
+          </ul>
         </div>
         <div class="hero-bottom container">
           <p class="hero-location">
@@ -412,20 +423,26 @@
           </div>
         </div>
       </div>
-      <div class="promise-strip container">
+      <div class="promise-strip container" aria-label="Why book with us">
         <p>
-          <svg class="icon"><use href="#pin" /></svg> Operate from Jaipur —
-          travel anywhere in India
+          <svg class="icon"><use href="#pin" /></svg>
+          <strong>Jaipur base</strong>
+          <span>Travel anywhere in India</span>
         </p>
-        <span></span>
         <p>
-          <svg class="icon"><use href="#compass" /></svg> Sedan to Urbania —
-          right size for your group
+          <svg class="icon"><use href="#compass" /></svg>
+          <strong>Right vehicle</strong>
+          <span>Sedan to Urbania</span>
         </p>
-        <span></span>
         <p>
-          <svg class="icon"><use href="#spark" /></svg> Host quote on WhatsApp —
-          before you book
+          <svg class="icon"><use href="#spark" /></svg>
+          <strong>Clear quote</strong>
+          <span>Confirmed on WhatsApp</span>
+        </p>
+        <p>
+          <svg class="icon"><use href="#check" /></svg>
+          <strong>No locked fare</strong>
+          <span>Talk first, then book</span>
         </p>
       </div>
       <section
@@ -516,12 +533,22 @@
               A shared Delhi NCR → Manali sightseeing weekend — Fri 10:00 PM
               departure, Sun 9:00 PM return. Breakfast and dinner included.
             </p>
-            <p class="stranger-home-price">
-              From <strong>₹6,500</strong> <span>/ person · quad</span>
-              <span class="stranger-home-price-alt">₹7,000 double · ₹7,500 single</span>
-            </p>
+            <div class="stranger-home-price-board" aria-label="Sharing prices">
+              <article>
+                <span>Quad</span>
+                <strong>₹6,500</strong>
+              </article>
+              <article>
+                <span>Double</span>
+                <strong>₹7,000</strong>
+              </article>
+              <article>
+                <span>Single</span>
+                <strong>₹7,500</strong>
+              </article>
+            </div>
             <p class="stranger-home-next">
-              Next departure:
+              Breakfast &amp; dinner included · Next:
               <strong data-home-next-weekend>upcoming weekend</strong>
             </p>
             <div class="stranger-home-actions">
@@ -570,7 +597,7 @@
             </div>
             <ul class="stranger-home-points">
               <li><svg class="icon"><use href="#check" /></svg> Breakfast &amp; dinner included</li>
-              <li><svg class="icon"><use href="#check" /></svg> Quad ₹6,500 · Double ₹7,000 · Single ₹7,500</li>
+              <li><svg class="icon"><use href="#check" /></svg> Fri 10 PM leave · Sun 9 PM return</li>
               <li><svg class="icon"><use href="#check" /></svg> Solang · Hadimba · Old Manali · Mall Road</li>
             </ul>
           </div>

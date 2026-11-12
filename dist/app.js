@@ -1226,3 +1226,25 @@ updateSavedUI();
     el.textContent = range;
   });
 }
+
+/* Mobile sticky plan bar on homepage */
+if (document.body.classList.contains("home-page")) {
+  const stickyBar = document.createElement("a");
+  stickyBar.className = "home-mobile-bar";
+  stickyBar.href = "#trip-finder";
+  stickyBar.innerHTML =
+    `<span>Plan any India route · <strong>host quote</strong></span><em>Plan trip</em>`;
+  document.body.appendChild(stickyBar);
+
+  const finderCta =
+    $(".search-submit") || $("[data-action='whatsapp-quote']") || $("#trip-finder");
+  if (finderCta && "IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        stickyBar.classList.toggle("is-hidden", entry.isIntersecting);
+      },
+      { threshold: 0.55, rootMargin: "-12% 0px -12% 0px" }
+    );
+    observer.observe(finderCta);
+  }
+}
