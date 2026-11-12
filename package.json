@@ -1,0 +1,19 @@
+{
+  "name": "gupta-ji-tour-and-travels",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "An editorial travel discovery website for Gupta Ji Tour & Travels",
+  "scripts": {
+    "dev": "node scripts/serve.mjs",
+    "start": "node scripts/serve.mjs",
+    "check": "node --check dist/app.js && node --check dist/data.js && node --check dist/destinations-data.js && node --check dist/site-config.js && node --check dist/weekend.js && node --check dist/stranger-trips.js && node --check scripts/serve.mjs && node --check scripts/build.mjs",
+    "build": "node scripts/build.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2"
+  }
+}

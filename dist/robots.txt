@@ -1,0 +1,6 @@
+# Preview / staging: keep the site out of search until content is approved.
+# At launch: set Allow: / , remove Disallow: / , and keep the Sitemap line.
+User-agent: *
+Disallow: /
+
+Sitemap: https://www.example.com/sitemap.xml

@@ -1,0 +1,522 @@
+export const styles = {
+  culture: "Culture & discovery",
+  nature: "Nature & adventure",
+  slow: "Slow escapes",
+};
+
+/** Jaipur-based India transport & sightseeing — framed for enquiry, not live tariffs. */
+export const fleet = [
+  {
+    id: "sedan",
+    name: "Sedan · 5 seater",
+    model: "Dzire / Etios class",
+    seats: "4 guests + driver",
+    bestFor: "Couples, airport runs, light luggage",
+    image: "sedan",
+    alt: "Silver Maruti Suzuki Dzire sedan used for private city and intercity travel",
+  },
+  {
+    id: "ertiga",
+    name: "Ertiga · 7 seater",
+    model: "Maruti Ertiga class",
+    seats: "6 guests + driver",
+    bestFor: "Small families and flexible day tours",
+    image: "ertiga",
+    alt: "Suzuki Ertiga seven-seater MPV for family travel",
+  },
+  {
+    id: "innova",
+    name: "Innova · 7 seater",
+    model: "Toyota Innova / Crysta class",
+    seats: "6–7 guests + driver",
+    bestFor: "Longer intercity comfort and luggage space",
+    image: "innova",
+    alt: "Toyota Innova Crysta suitable for intercity private cabs",
+  },
+  {
+    id: "traveller",
+    name: "Tempo Traveller",
+    model: "Force Traveller class",
+    seats: "12–17 guests + driver",
+    bestFor: "Friend groups, wedding guests, pilgrim parties",
+    image: "traveller",
+    alt: "Force Traveller van on an Indian mountain highway",
+  },
+  {
+    id: "urbania",
+    name: "Force Urbania",
+    model: "Premium group van",
+    seats: "9–17 guests + driver",
+    bestFor: "Premium group touring with more comfort",
+    image: "urbania",
+    alt: "Premium Force group van used as an illustrative Urbania-class vehicle",
+  },
+];
+
+export const indiaExperiences = [
+  {
+    id: "jaipur-sightseeing",
+    title: "Jaipur sightseeing, your pace",
+    tagline: "Amber Fort, City Palace, Hawa Mahal, and the Pink City’s quieter corners.",
+    image: "amber",
+    alt: "Amber Fort overlooking Maota Lake at golden hour in Jaipur",
+    points: [
+      "Half- or full-day private car with hotel pickup in Jaipur",
+      "Amber Fort, City Palace, Hawa Mahal — paced around you",
+    ],
+  },
+  {
+    id: "delhi-sightseeing",
+    title: "Delhi sightseeing, old and new",
+    tagline: "Red Fort, India Gate, Humayun’s Tomb, Qutub Minar — shaped around your day.",
+    image: "redfort",
+    alt: "Red sandstone walls of the Red Fort in Delhi",
+    points: [
+      "Half- or full-day private AC cab for Delhi / NCR pickup",
+      "Old Delhi energy and New Delhi avenues in one clear plan",
+    ],
+  },
+  {
+    id: "delhi-link",
+    title: "Jaipur ↔ Delhi, door to door",
+    tagline: "Private intercity transfers with sightseeing add-ons in either city.",
+    image: "delhi",
+    alt: "India Gate illuminated in the evening in New Delhi",
+    points: [
+      "One-way or round-trip private cab between Jaipur and Delhi NCR",
+      "Optional sightseeing on arrival or departure days",
+    ],
+  },
+  {
+    id: "rajasthan-roads",
+    title: "Across India from Jaipur",
+    tagline: "Rajasthan, UP, Punjab, Himachal, Uttarakhand, J&K — and any route you name.",
+    image: "india",
+    alt: "The pink sandstone façade of Hawa Mahal in Jaipur",
+    points: [
+      "Outstation cabs for long Indian roads — sedan to Urbania",
+      "Package or car-only; final quote after host conversation",
+    ],
+  },
+];
+
+export const tours = [
+  {
+    id: "jaipur-day",
+    country: "India",
+    region: "JAIPUR, RAJASTHAN",
+    title: "A day in the Pink City",
+    tagline: "Forts, courtyards, and bazaar colour — without the rush.",
+    image: "amber",
+    alt: "Amber Fort above Maota Lake in Jaipur at sunset",
+    days: 1,
+    nights: 0,
+    style: "culture",
+    price: 85,
+    priceBasis: "vehicle",
+    months: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+    route: "Amber Fort · City Palace · Hawa Mahal",
+    description:
+      "A private Jaipur sightseeing day based from the city we know best. Explore Amber Fort, pause at Jal Mahal, then continue to City Palace, Hawa Mahal, and Jantar Mantar. We match the car to your group — sedan, Ertiga, Innova, Traveller, or Urbania — and leave room for craft markets or a quieter café stop if you prefer.",
+    itinerary: [
+      [
+        "Morning",
+        "Hotel pickup in Jaipur. Drive to Amber Fort for courtyards, views, and time to explore at your pace.",
+      ],
+      [
+        "Midday",
+        "Photo stop at Jal Mahal, then lunch break at a place that suits your preferences.",
+      ],
+      [
+        "Afternoon",
+        "City Palace and Jantar Mantar, with a Hawa Mahal viewpoint and optional bazaar time before hotel drop.",
+      ],
+    ],
+    included: [
+      "Private AC vehicle for the sightseeing window agreed in your quote",
+      "Driver, fuel, and local parking as confirmed in writing",
+      "Hotel pickup and drop within Jaipur city limits (unless otherwise agreed)",
+    ],
+    excluded: [
+      "Monument entry tickets and guide fees unless expressly listed",
+      "Meals, tips, and personal shopping",
+      "Elephant / jeep rides at Amber unless requested and confirmed",
+    ],
+  },
+  {
+    id: "delhi-day",
+    country: "India",
+    region: "DELHI NCR",
+    title: "A day in Delhi",
+    tagline: "Old Delhi energy. New Delhi avenues. One private car.",
+    image: "redfort",
+    alt: "The Red Fort complex in Delhi under a clear sky",
+    days: 1,
+    nights: 0,
+    style: "culture",
+    price: 95,
+    priceBasis: "vehicle",
+    months: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+    route: "Red Fort · India Gate · Qutub Minar",
+    description:
+      "A private Delhi sightseeing day with hotel pickup across Delhi NCR. Blend Old Delhi highlights such as the Red Fort and Jama Masjid with New Delhi stops like India Gate, Humayun’s Tomb, and Qutub Minar. We match sedan, Ertiga, Innova, Traveller, or Urbania to your group and keep the route flexible for traffic, opening hours, and what you most want to see.",
+    itinerary: [
+      [
+        "Morning",
+        "Hotel pickup in Delhi / NCR. Begin with Old Delhi highlights such as the Red Fort and Jama Masjid area, paced to your interest.",
+      ],
+      [
+        "Midday",
+        "India Gate and central vista photo stops, then a lunch break that suits your preferences.",
+      ],
+      [
+        "Afternoon",
+        "Humayun’s Tomb and Qutub Minar, with optional Lotus Temple if time and energy allow, before hotel or airport drop.",
+      ],
+    ],
+    included: [
+      "Private AC vehicle for the sightseeing window agreed in your quote",
+      "Driver, fuel, and local parking as confirmed in writing",
+      "Hotel pickup and drop within an agreed Delhi / NCR zone",
+    ],
+    excluded: [
+      "Monument entry tickets and guide fees unless expressly listed",
+      "Meals, tips, rickshaw rides, and personal shopping",
+      "Areas outside the agreed zone unless added to the written plan",
+    ],
+  },
+  {
+    id: "delhi-jaipur",
+    country: "India",
+    region: "DELHI · JAIPUR",
+    title: "Delhi and Jaipur, linked by road",
+    tagline: "A comfortable private cab between the capital and the Pink City.",
+    image: "delhi",
+    alt: "India Gate in New Delhi at dusk",
+    days: 2,
+    nights: 1,
+    style: "culture",
+    price: 220,
+    priceBasis: "vehicle",
+    months: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+    route: "Delhi NCR · Jaipur",
+    description:
+      "Operate from Jaipur with trusted private cars for the Delhi–Jaipur corridor. Use this as a one-way transfer, a round trip, or the backbone of a short Golden Triangle start. We help you choose the right vehicle for luggage and group size, then shape sightseeing time in Jaipur around your arrival.",
+    itinerary: [
+      [
+        "Day 1",
+        "Private pickup in Delhi NCR or Jaipur. Comfortable intercity drive with planned rest stops.",
+      ],
+      [
+        "Day 2",
+        "Optional Jaipur sightseeing highlights, or onward drop to hotel / airport as agreed in your plan.",
+      ],
+    ],
+    included: [
+      "Private AC vehicle matched to your party",
+      "Driver allowance, fuel, and tolls as listed in the written quote",
+      "Flexible pickup / drop points agreed before travel",
+    ],
+    excluded: [
+      "Hotels and meals unless packaged separately",
+      "Monument tickets and local guides",
+      "State taxes or parking beyond what the quote confirms",
+    ],
+  },
+  {
+    id: "japan",
+    country: "Japan",
+    region: "JAPAN",
+    title: "Japan, beyond the expected",
+    tagline: "Tokyo's energy. Kyoto's quiet. Your own way through.",
+    image: "japan",
+    alt: "Vermilion torii gates along the Fushimi Inari walkway in Kyoto, Japan",
+    days: 10,
+    nights: 9,
+    style: "culture",
+    price: 2490,
+    months: [3, 4, 5, 9, 10, 11],
+    route: "Tokyo · Hakone · Kyoto",
+    description:
+      "An introduction to Japan with space to find your own favourite moments. Explore Tokyo's neighbourhoods, pause in Hakone, then discover Kyoto's quieter lanes and traditional gardens. This example route balances landmark visits with time that belongs to you.",
+    itinerary: [
+      [
+        "Days 1–3",
+        "Arrive in Tokyo. Explore a neighbourhood with a local guide, then leave time for markets, design shops, and your own discoveries.",
+      ],
+      [
+        "Days 4–5",
+        "Travel to Hakone for mountain views and a slower pace. Choose optional walks or a quiet afternoon at your accommodation.",
+      ],
+      [
+        "Days 6–9",
+        "Continue to Kyoto. Visit Fushimi Inari, explore traditional streets, and consider a day trip to Nara. Sightseeing and rest days can be balanced to your preferences.",
+      ],
+      ["Day 10", "Enjoy a final morning before your onward transfer."],
+    ],
+    included: [
+      "9 nights of example hotel accommodation, based on twin sharing",
+      "Daily breakfast",
+      "Example intercity rail and arrival/departure transfer arrangements",
+      "Selected private guided visits as listed in your final quote",
+    ],
+    excluded: [
+      "International flights and visa costs",
+      "Travel insurance",
+      "Meals and activities not listed",
+      "Local taxes or transport not expressly included",
+    ],
+  },
+  {
+    id: "bali",
+    country: "Bali",
+    region: "BALI, INDONESIA",
+    title: "A slower kind of Bali",
+    tagline: "Green mornings, island rituals, and room to just be.",
+    image: "bali",
+    alt: "Lush green rice terraces in Bali, Indonesia",
+    days: 7,
+    nights: 6,
+    style: "slow",
+    price: 1190,
+    months: [4, 5, 6, 7, 8, 9, 10],
+    route: "Ubud · South Bali",
+    description:
+      "Trade a busy schedule for time among Ubud's green landscapes, craft traditions, and open-air cafés. Finish beside the coast, with flexible days to walk, swim, or do very little. This illustrative journey leaves room for the island's quieter moments.",
+    itinerary: [
+      [
+        "Days 1–2",
+        "Arrive and settle into Ubud. Take a gentle orientation walk and discover nearby cafés and craft shops.",
+      ],
+      [
+        "Days 3–4",
+        "Explore rice-growing landscapes and a village with a guide. Leave a day open for a cooking experience or time by the pool.",
+      ],
+      [
+        "Days 5–6",
+        "Transfer to the south coast. Choose beach time, a relaxed coastal walk, or an optional cultural visit.",
+      ],
+      ["Day 7", "Unhurried breakfast and a transfer for your onward journey."],
+    ],
+    included: [
+      "6 nights of example accommodation, based on twin sharing",
+      "Daily breakfast",
+      "Private airport and inter-hotel transfers",
+      "One guided Ubud-area discovery day",
+    ],
+    excluded: [
+      "International flights and entry requirements",
+      "Travel insurance",
+      "Optional experiences and spa treatments",
+      "Meals other than those confirmed in your quote",
+    ],
+  },
+  {
+    id: "dolomites",
+    country: "Italy",
+    region: "ITALY",
+    title: "The Dolomites, a little closer",
+    tagline: "Alpine trails, lakeside pauses, and a view worth the walk.",
+    image: "hero",
+    alt: "Turquoise Lake Braies and dramatic peaks in the Dolomites, Italy",
+    days: 8,
+    nights: 7,
+    style: "nature",
+    price: 2290,
+    months: [6, 7, 8, 9],
+    route: "Bolzano · Val Gardena · Lake Braies",
+    description:
+      "A mountain escape built around fresh air and beautiful pauses. Wander village streets, follow trails suited to your walking experience, and spend time beside the Dolomites' alpine lakes. Routes, altitude, and activity levels are confirmed together before you book.",
+    itinerary: [
+      [
+        "Days 1–2",
+        "Arrive in the region and settle into your mountain base. Explore Bolzano or a nearby village at your own pace.",
+      ],
+      [
+        "Days 3–4",
+        "Take guided walks chosen for your fitness and conditions, with breaks to enjoy the landscape.",
+      ],
+      [
+        "Days 5–6",
+        "Travel through Val Gardena and visit an alpine lake. Exact routes depend on season, weather, and local access.",
+      ],
+      [
+        "Days 7–8",
+        "Enjoy a flexible final day, then transfer for your onward travel.",
+      ],
+    ],
+    included: [
+      "7 nights of example alpine accommodation, based on twin sharing",
+      "Daily breakfast",
+      "Example ground transfers along the proposed route",
+      "Two guided walking days at an agreed level",
+    ],
+    excluded: [
+      "International flights",
+      "Travel insurance covering your planned activities",
+      "Cable cars and entry fees unless specified",
+      "Lunches, dinners, and optional excursions",
+    ],
+  },
+  {
+    id: "india",
+    country: "India",
+    region: "INDIA",
+    title: "India, in full colour",
+    tagline: "Delhi, Agra, and Jaipur. A remarkable first chapter.",
+    image: "india",
+    alt: "The intricate pink sandstone façade of Hawa Mahal in Jaipur, India",
+    days: 7,
+    nights: 6,
+    style: "culture",
+    price: 890,
+    months: [1, 2, 3, 10, 11, 12],
+    route: "Delhi · Agra · Jaipur",
+    description:
+      "A thoughtfully paced first encounter with India's Golden Triangle. Follow stories through Delhi's historic neighbourhoods, see Agra's celebrated architecture, and discover Jaipur's colourful streets. Time for markets, local food, and personal interests makes the route your own.",
+    itinerary: [
+      [
+        "Days 1–2",
+        "Arrive in Delhi. Explore selected historic sights and neighbourhoods with time to adjust to the pace of the city.",
+      ],
+      [
+        "Days 3–4",
+        "Travel to Agra for the Taj Mahal and Agra Fort. Visits are scheduled around opening days and local conditions.",
+      ],
+      [
+        "Days 5–6",
+        "Continue to Jaipur. Discover Amber Fort, the old city, and the Hawa Mahal façade with a local guide.",
+      ],
+      [
+        "Day 7",
+        "Return transfer or onward arrangements, tailored to your plans.",
+      ],
+    ],
+    included: [
+      "6 nights of example hotels, based on twin sharing",
+      "Daily breakfast",
+      "Private air-conditioned ground transport for the proposed route",
+      "Selected local guided visits",
+    ],
+    excluded: [
+      "International or domestic flights",
+      "Visa, insurance, and personal expenses",
+      "Monument tickets unless confirmed in the quote",
+      "Meals and activities not listed",
+    ],
+  },
+  {
+    id: "swiss",
+    country: "Switzerland",
+    region: "SWITZERLAND",
+    title: "Switzerland, the scenic route",
+    tagline: "Window-seat moments and days among the mountains.",
+    image: "swiss",
+    alt: "Mountain landscape in the Swiss Alps",
+    days: 8,
+    nights: 7,
+    style: "slow",
+    price: 2890,
+    months: [5, 6, 7, 8, 9, 10],
+    route: "Lucerne · Interlaken · Zermatt",
+    description:
+      "Let the journey become part of the destination. This example Swiss route pairs scenic rail travel with alpine towns, lakeside walks, and time to linger. We can adjust the pace, accommodation, and optional mountain excursions around your interests.",
+    itinerary: [
+      [
+        "Days 1–2",
+        "Arrive in Lucerne. Walk the lakeside and explore the old town at an easy pace.",
+      ],
+      [
+        "Days 3–4",
+        "Continue towards Interlaken by rail. Choose a local walking route or a relaxed day among the lakes.",
+      ],
+      [
+        "Days 5–6",
+        "Travel to Zermatt. Explore the village and consider an optional mountain railway excursion, subject to conditions.",
+      ],
+      [
+        "Days 7–8",
+        "Enjoy a flexible final day, then take your onward rail connection.",
+      ],
+    ],
+    included: [
+      "7 nights of example accommodation, based on twin sharing",
+      "Daily breakfast",
+      "Example standard-class rail arrangements along the route",
+      "Arrival and departure guidance",
+    ],
+    excluded: [
+      "International flights",
+      "Travel insurance",
+      "Optional mountain railways or cable cars unless listed",
+      "Lunches, dinners, and personal expenses",
+    ],
+  },
+  {
+    id: "kenya",
+    country: "Kenya",
+    region: "KENYA",
+    title: "Kenya, wild at heart",
+    tagline: "Open horizons. Early light. Nature on its own terms.",
+    image: "safari",
+    alt: "Elephants silhouetted at sunrise in Amboseli National Park, Kenya",
+    days: 7,
+    nights: 6,
+    style: "nature",
+    price: 2690,
+    months: [1, 2, 6, 7, 8, 9, 10],
+    route: "Nairobi · Lake Naivasha · Maasai Mara",
+    description:
+      "An example introduction to Kenya's expansive landscapes. Set out with experienced local guiding, pause near the Rift Valley lakes, and allow time for game drives in the Maasai Mara. Wildlife sightings are always natural encounters and can never be guaranteed.",
+    itinerary: [
+      ["Day 1", "Arrive in Nairobi and settle in for the evening."],
+      [
+        "Days 2–3",
+        "Travel towards Lake Naivasha. Explore the area with locally arranged activities agreed in your final itinerary.",
+      ],
+      [
+        "Days 4–6",
+        "Continue to the Maasai Mara for guided game drives, with time to rest between outings.",
+      ],
+      ["Day 7", "Return to Nairobi for your onward arrangements."],
+    ],
+    included: [
+      "6 nights of example lodge/hotel accommodation, based on twin sharing",
+      "Meals as specifically listed in your final quote",
+      "Example safari ground transport and guided game drives",
+      "Park fees only where expressly confirmed",
+    ],
+    excluded: [
+      "International flights and entry requirements",
+      "Travel insurance",
+      "Optional balloon flights and other additional activities",
+      "Gratuities and personal expenses",
+    ],
+  },
+];
+export const articles = {
+  japan: {
+    title: "Japan, at your own pace",
+    subtitle: "Finding the space between the sights.",
+    image: "japan",
+    alt: "Vermilion torii gates at Fushimi Inari in Kyoto",
+    category: "THE TRAVEL EDIT",
+    body: `<p>A first trip to Japan can become a long list of places to tick off. A more rewarding starting point is to choose fewer bases and leave time to explore each one. Tokyo and Kyoto alone offer an extraordinary contrast, while a smaller stop between them can give your trip a different rhythm.</p><h3>Choose neighbourhoods, not just landmarks.</h3><p>Allow time for one part of a city at a time. A morning in a garden, a slow lunch, and an afternoon wandering local streets can be as memorable as a famous attraction. Leave room for places you discover along the way.</p><h3>Give travel days some breathing room.</h3><p>Changing hotels takes more time than the train journey alone. Packing, checking out, navigating a station, and settling into a new place all use energy. A free afternoon after moving can make the difference between a busy trip and an enjoyable one.</p><h3>Let your interests guide the itinerary.</h3><p>Whether you love ceramics, food, architecture, walking, or design, build the route around what makes you curious. Tell your planner what you enjoy and what you prefer to skip. The best route is the one you want to experience.</p><p>Seasonal conditions, opening hours, accessibility, and local availability should be checked for your specific dates before booking.</p>`,
+  },
+  india: {
+    title: "India's Golden Triangle",
+    subtitle: "Where do you begin?",
+    image: "india",
+    alt: "Hawa Mahal in Jaipur, India",
+    category: "FIRST-TIME FAVOURITES",
+    body: `<p>Delhi, Agra, and Jaipur make a compelling first introduction to India. Together, they offer a mix of monumental architecture, living traditions, bustling streets, and very different city personalities. Treat the route as an introduction rather than a race.</p><h3>Delhi: allow time to arrive.</h3><p>Give yourself time to settle in before a full day of sightseeing, especially after a long flight. Exploring one neighbourhood with a guide can help put the city's layers of history and daily life into context.</p><h3>Agra: look beyond the photograph.</h3><p>The Taj Mahal is a highlight, but a visit is richer when it includes the stories behind the architecture and enough time to look closely. Agra Fort adds another perspective. Your final schedule should account for opening days, travel time, and local conditions.</p><h3>Jaipur: make space for the details.</h3><p>The façade of Hawa Mahal, the old city's streets, and the setting of Amber Fort all deserve an unhurried look. Consider time for traditional crafts or a food experience if those interest you.</p><h3>A personal route beats a packed one.</h3><p>A private driver, carefully chosen bases, and a sensible daily pace can help make a first trip feel comfortable. Share mobility needs, dietary preferences, and priorities before the itinerary is confirmed. Check official travel and entry guidance for your nationality and dates.</p>`,
+  },
+  walking: {
+    title: "A walking holiday that feels like a holiday",
+    subtitle: "Take the scenic route, at your own pace.",
+    image: "hero",
+    alt: "A turquoise lake and mountain landscape in the Dolomites",
+    category: "TAKE THE SCENIC ROUTE",
+    body: `<p>A beautiful view is even better when the walk to reach it suits you. When choosing a walking holiday, start with how you want your days to feel. A gentle lakeside path and a full alpine hike are very different experiences, even if both look wonderful in a photograph.</p><h3>Look beyond distance.</h3><p>Ask about elevation gain, surface, exposure, altitude, and the amount of time on your feet. A short steep trail can feel more demanding than a longer flat one. Discuss your recent walking experience with your planner and guide.</p><h3>Keep a flexible day.</h3><p>Mountain weather can change quickly. A flexible itinerary gives your guide room to adapt routes to conditions and leaves you time to enjoy a village, a café, or a quieter afternoon. A rest day is part of the experience.</p><h3>Choose the right base.</h3><p>Staying in one or two places can reduce packing and transfers. It also gives you the pleasure of returning to a familiar setting each evening. Tell your planner whether you prefer a peaceful village or more restaurants and services nearby.</p><p>Before booking, confirm activity levels, equipment, guide arrangements, and suitable insurance with the relevant provider. Final routes must suit current local conditions and your needs.</p>`,
+  },
+};
