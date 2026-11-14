@@ -1,7 +1,8 @@
 import { build } from "esbuild";
-import { cp, mkdir, readFile, rm, writeFile } from "node:fs/promises";
+import { cp, mkdir, readFile, readdir, rename, rm, stat, unlink, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
+import sharp from "sharp";
 
 const root = fileURLToPath(new URL("..", import.meta.url));
 const dist = path.join(root, "dist");
@@ -24,6 +25,44 @@ await mkdir(out, { recursive: true });
 await cp(path.join(dist, "assets"), path.join(out, "assets"), {
   recursive: true,
 });
+
+/** Recompress WebP in the publish folder so Vercel ships smaller images. */
+async function optimizePublicWebp() {
+  const assetsDir = path.join(out, "assets");
+  const files = await readdir(assetsDir);
+  let saved = 0;
+  for (const file of files) {
+    if (!file.endsWith(".webp")) continue;
+    const full = path.join(assetsDir, file);
+    const before = (await stat(full)).size;
+    const isSmall = file.includes("-small");
+    const width = isSmall ? 720 : 1200;
+    const quality = isSmall ? 62 : 68;
+    try {
+      const buf = await sharp(full)
+        .resize({ width, withoutEnlargement: true })
+        .webp({ quality, effort: 6 })
+        .toBuffer();
+      if (buf.length >= before * 0.98) continue;
+      const tmp = `${full}.${process.pid}.tmp.webp`;
+      await writeFile(tmp, buf);
+      try {
+        await unlink(full);
+      } catch {
+        /* Windows may keep a lock; rename still often works */
+      }
+      await rename(tmp, full);
+      saved += before - buf.length;
+    } catch {
+      /* keep original if sharp cannot rewrite this file */
+    }
+  }
+  if (saved > 0) {
+    console.log(`Optimized WebP assets (−${Math.round(saved / 1024)} KiB)`);
+  }
+}
+
+await optimizePublicWebp();
 
 await build({
   entryPoints: [path.join(dist, "app.js")],

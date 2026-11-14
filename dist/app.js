@@ -133,7 +133,7 @@ function photo(tour, className = "") {
     className === "dialog-hero"
       ? "(max-width:700px) calc(100vw - 32px), 800px"
       : "(max-width:700px) calc(100vw - 40px), (max-width:980px) 45vw, 400px";
-  return `<img ${className ? `class="${className}"` : ""} src="assets/${tour.image}.webp" srcset="${sources}" sizes="${sizes}" alt="${escape(tour.alt)}" width="1000" height="750" loading="lazy">`;
+  return `<img ${className ? `class="${className}"` : ""} src="assets/${tour.image}.webp" srcset="${sources}" sizes="${sizes}" alt="${escape(tour.alt)}" width="1000" height="750" loading="lazy" decoding="async">`;
 }
 function durationLabel(tour) {
   if (tour.nights === 0 && tour.days === 1) return "DAY TOUR";
@@ -350,9 +350,13 @@ function routeSummary() {
 function placeVisual(place) {
   const region = String(place.region || "").toLowerCase();
   const label = String(place.label || "").toLowerCase();
-  if (region.includes("delhi") || label.includes("delhi")) return "redfort";
-  if (region.includes("rajasthan") || label.includes("jaipur") || label.includes("udaipur") || label.includes("jodhpur"))
+  if (region.includes("delhi") || label.includes("delhi") || label.includes("noida") || label.includes("gurugram") || label.includes("gurgaon"))
+    return "redfort";
+  if (label.includes("manali") || label.includes("solang") || label.includes("himachal") || region.includes("himachal"))
+    return "manali-hero";
+  if (region.includes("rajasthan") || label.includes("jaipur") || label.includes("amber") || label.includes("udaipur") || label.includes("jodhpur") || label.includes("pushkar") || label.includes("ajmer"))
     return "amber";
+  if (label.includes("agra") || label.includes("taj")) return "india";
   if (place.countryCode === "IN") return "india";
   return "hero";
 }
@@ -383,7 +387,7 @@ function renderFinderResults() {
           .map(([id, rate]) => {
             const image = vehicleImages[id] || "sedan";
             return `<button type="button" class="vehicle-rate ${state.vehicle === id ? "active" : ""}" data-vehicle="${id}">
-              <span class="vehicle-rate-photo"><img src="assets/${image}.webp" srcset="assets/${image}-small.webp 560w, assets/${image}.webp 1200w" sizes="180px" width="320" height="200" alt="${escape(rate.label)}" loading="lazy" /></span>
+              <span class="vehicle-rate-photo"><img src="assets/${image}.webp" srcset="assets/${image}-small.webp 560w, assets/${image}.webp 1200w" sizes="180px" width="320" height="200" alt="${escape(rate.label)}" loading="lazy" decoding="async" /></span>
               <span class="vehicle-rate-body">
                 <strong>${escape(rate.label)}</strong>
                 <em>≈ ${formatInrApprox(rate.from)}–${formatInrApprox(rate.to)}/km</em>
@@ -405,7 +409,7 @@ function renderFinderResults() {
     <h3>Full package with itinerary</h3>
     ${routeSummary()}
     <div class="package-visual">
-      <img src="assets/${visual}.webp" srcset="assets/${visual}-small.webp 560w, assets/${visual}.webp 1200w" sizes="140px" width="280" height="210" alt="${escape(place.label)}" loading="lazy" />
+      <img src="assets/${visual}.webp" srcset="assets/${visual}-small.webp 560w, assets/${visual}.webp 1200w" sizes="(max-width:700px) 92vw, 220px" width="440" height="300" alt="${escape(place.label)}" loading="lazy" decoding="async" />
       <div>
         <p>Approx planning range for this route — stays, pacing, and inclusions shaped with you. Guidance only, not a locked tariff.</p>
         <p class="finder-price">Approx from ${formatInrApprox(band.from, { roundTo: 10 })} – ${formatInrApprox(band.to, { roundTo: 10 })}
@@ -988,7 +992,7 @@ function renderIndiaServices() {
     .map(
       (vehicle) => `<article class="fleet-card">
         <div class="fleet-image">
-          <img src="assets/${vehicle.image}.webp" srcset="assets/${vehicle.image}-small.webp 560w, assets/${vehicle.image}.webp 1200w" sizes="(max-width:700px) 80vw, 220px" width="640" height="420" loading="lazy" alt="${escape(vehicle.alt)}" />
+          <img src="assets/${vehicle.image}.webp" srcset="assets/${vehicle.image}-small.webp 560w, assets/${vehicle.image}.webp 1200w" sizes="(max-width:700px) 80vw, 220px" width="640" height="420" loading="lazy" decoding="async" alt="${escape(vehicle.alt)}" />
         </div>
         <div class="fleet-copy">
           <p class="fleet-model">${escape(vehicle.model)}</p>
@@ -1003,7 +1007,7 @@ function renderIndiaServices() {
   experienceGrid.innerHTML = indiaExperiences
     .map(
       (item) => `<article class="india-experience">
-        <img src="assets/${item.image}.webp" srcset="assets/${item.image}-small.webp 560w, assets/${item.image}.webp 1200w" sizes="(max-width:700px) 90vw, 360px" width="900" height="600" loading="lazy" alt="${escape(item.alt)}" />
+        <img src="assets/${item.image}.webp" srcset="assets/${item.image}-small.webp 560w, assets/${item.image}.webp 1200w" sizes="(max-width:700px) 90vw, 360px" width="900" height="600" loading="lazy" decoding="async" alt="${escape(item.alt)}" />
         <div>
           <h3>${escape(item.title)}</h3>
           <p>${escape(item.tagline)}</p>

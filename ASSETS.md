@@ -114,6 +114,21 @@ Walter Schachtschneider
 - License: [Free Art License](https://artlibre.org/licence/lal/en/)
 - Adaptation: resized and compressed to WebP.
 
+## manali-stay-*.webp · manali-activity.webp
+
+Client-supplied Manali stay and camp photographs (WhatsApp originals in `manali_images/`). Used on the Stranger Trips page stay gallery, Day 1 itinerary, home-page Manali mosaic, and optional adventure note.
+
+- `manali-stay-tents` — green-roof luxury tent row (home mosaic + gallery)
+- `manali-stay-tents-2` — full camp overview with mountains (stay feature)
+- `manali-stay-lawn` — safari tents and marigold gardens
+- `manali-stay-path` — wood-front tent cottages (Day 1 check-in)
+- `manali-stay-porch` — porch view over camp seating
+- `manali-stay-pavilion` — covered outdoor dining beside tents
+- `manali-stay-room-a` / `room-b` — tent room interiors
+- `manali-stay-campfire` — evening chair circle
+- `manali-activity` — optional paid adventure park (not included in package)
+- Adaptation: cropped/resized to WebP (1200w + 720w small), quality tuned for Vercel.
+
 ## Fonts
 
 Manrope regular and bold are locally hosted. Copyright 2018 The Manrope Project Authors. Source: [Google Fonts Manrope directory](https://github.com/google/fonts/tree/main/ofl/manrope). Licensed under the [SIL Open Font License 1.1](https://raw.githubusercontent.com/google/fonts/main/ofl/manrope/OFL.txt); the full license is included at `dist/assets/Manrope-OFL.txt`.

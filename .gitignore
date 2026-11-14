@@ -6,3 +6,8 @@ public/
 .tmp-assets/
 *.log
 .DS_Store
+
+_img_preview/
+manali_images/
+*.webp.tmp
+

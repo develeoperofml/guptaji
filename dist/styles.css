@@ -11,17 +11,27 @@
   font-display: swap;
 }
 :root {
-  --green: #183f35;
-  --green-dark: #102f28;
-  --lime: #dcebb9;
-  --ivory: #f6f5ef;
-  --ink: #243b34;
-  --muted: #606d66;
-  --line: #dce2d9;
+  --green: #1f4a3c;
+  --green-dark: #12352c;
+  --lime: #e8f0c8;
+  --ivory: #f8f5ee;
+  --ink: #243832;
+  --muted: #5d6b64;
+  --line: #dde3d7;
   --white: #fff;
+  --accent: #c97630;
+  --accent-soft: #f6e8d8;
   --font: Manrope, "Trebuchet MS", sans-serif;
   --section-y: 80px;
   --section-gap: 36px;
+}
+img {
+  max-width: 100%;
+  height: auto;
+  background: #e8ebe4;
+}
+img[loading="lazy"] {
+  content-visibility: auto;
 }
 * {
   box-sizing: border-box;
@@ -882,7 +892,7 @@ h1 em {
 }
 .package-visual {
   display: grid;
-  grid-template-columns: 140px 1fr;
+  grid-template-columns: minmax(160px, 220px) 1fr;
   gap: 14px;
   align-items: center;
   margin-top: 12px;
@@ -892,7 +902,8 @@ h1 em {
   aspect-ratio: 4 / 3;
   object-fit: cover;
   display: block;
-  border-radius: 4px;
+  border-radius: 8px;
+  background: #e8ebe4;
 }
 @media (max-width: 700px) {
   .package-visual {
@@ -5405,6 +5416,59 @@ dialog::backdrop {
   font-weight: 700;
   letter-spacing: 0.04em;
 }
+.stranger-stay {
+  background:
+    linear-gradient(180deg, rgba(243, 228, 212, 0.35), transparent 42%),
+    linear-gradient(180deg, #f3f6ef 0%, #fff 100%);
+}
+.stranger-stay-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 28px;
+}
+.stranger-stay-grid figure {
+  margin: 0;
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #e7ebe4;
+  min-height: 180px;
+  aspect-ratio: 4 / 3;
+}
+.stranger-stay-grid .stay-feature {
+  grid-column: 1 / span 2;
+  grid-row: 1 / span 2;
+  aspect-ratio: auto;
+  min-height: 100%;
+}
+.stranger-stay-grid img {
+  width: 100%;
+  height: 100%;
+  min-height: 180px;
+  object-fit: cover;
+  display: block;
+}
+.stranger-stay-grid figcaption {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(16, 47, 40, 0.72);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+.section,
+.stranger-gallery,
+.stranger-stay,
+.journeys-section,
+.india-services {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 800px;
+}
 
 .stranger-page {
   scroll-padding-top: 84px;
@@ -6255,6 +6319,18 @@ dialog::backdrop {
   }
   .stranger-home-mosaic {
     min-height: 240px;
+  }
+  .stranger-stay-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .stranger-stay-grid .stay-feature {
+    grid-column: 1 / -1;
+    grid-row: auto;
+    min-height: 220px;
+    aspect-ratio: 16 / 10;
+  }
+  .stranger-stay-grid figure {
+    aspect-ratio: 4 / 3;
   }
   .stranger-home-price-board {
     gap: 8px;
