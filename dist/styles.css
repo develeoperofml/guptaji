@@ -12,12 +12,13 @@
 }
 :root {
   /* Cool stone + pine + brick ? grounded operator look, not cream/saffron AI kit */
-  --green: #1c3d36;
-  --green-dark: #122a25;
-  --lime: #d7e2d4;
+  --green: #3d6f86;
+  --green-dark: #2f5a6e;
+  --green-soft: #8ebdd4;
+  --lime: #d7e8f0;
   --ivory: #f5f4f1;
   --sand: #e9e6e0;
-  --mist: #e6e9e4;
+  --mist: #e8eef2;
   --ink: #1a2421;
   --muted: #5a635e;
   --line: #c9cec8;
@@ -25,7 +26,7 @@
   --accent: #a84532;
   --accent-deep: #853528;
   --accent-soft: #efe3df;
-  --accent-glow: rgba(26, 36, 33, 0.1);
+  --accent-glow: rgba(111, 163, 188, 0.22);
   --font: Manrope, "Trebuchet MS", sans-serif;
   --section-y: 72px;
   --section-gap: 32px;
@@ -197,24 +198,26 @@ svg {
   transform: translateY(-2px);
 }
 .button.primary {
-  background: var(--green);
-  color: #fff;
+  background: var(--green-soft);
+  color: var(--ink);
   box-shadow: none;
 }
 .button.primary:hover {
-  background: var(--green-dark);
-}
-.button.brand {
   background: var(--green);
   color: #fff;
+}
+.button.brand {
+  background: var(--green-soft);
+  color: var(--ink);
   box-shadow: none;
 }
 .button.brand:hover {
-  background: var(--green-dark);
+  background: var(--green);
+  color: #fff;
 }
 .button.light {
   background: #fff;
-  color: var(--green);
+  color: var(--ink);
 }
 .button.light:hover {
   background: var(--mist);
@@ -6555,11 +6558,11 @@ dialog::backdrop {
   background: #eceae5;
 }
 .band-deep {
-  background: var(--green-dark);
+  background: #3d6f86;
   color: #f2f1ee;
 }
 .band-deep .eyebrow {
-  color: #c4b5a8;
+  color: #c9dce6;
 }
 .band-deep h2,
 .band-deep h3,
