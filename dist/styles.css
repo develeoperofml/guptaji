@@ -11,21 +11,21 @@
   font-display: swap;
 }
 :root {
-  /* Trust/nature green + warm saffron for action (booking attention) */
-  --green: #184a3c;
-  --green-dark: #0e3229;
-  --lime: #e6f2b8;
-  --ivory: #fffdf9;
-  --sand: #f4ebe0;
-  --mist: #eef3ea;
-  --ink: #1e322c;
-  --muted: #586860;
-  --line: #d5ddd0;
+  /* Cool stone + pine + brick ? grounded operator look, not cream/saffron AI kit */
+  --green: #1c3d36;
+  --green-dark: #122a25;
+  --lime: #d7e2d4;
+  --ivory: #f5f4f1;
+  --sand: #e9e6e0;
+  --mist: #e6e9e4;
+  --ink: #1a2421;
+  --muted: #5a635e;
+  --line: #c9cec8;
   --white: #fff;
-  --accent: #e08a2a;
-  --accent-deep: #c46e16;
-  --accent-soft: #f8e6cf;
-  --accent-glow: rgba(224, 138, 42, 0.22);
+  --accent: #a84532;
+  --accent-deep: #853528;
+  --accent-soft: #efe3df;
+  --accent-glow: rgba(26, 36, 33, 0.1);
   --font: Manrope, "Trebuchet MS", sans-serif;
   --section-y: 72px;
   --section-gap: 32px;
@@ -197,12 +197,12 @@ svg {
   transform: translateY(-2px);
 }
 .button.primary {
-  background: var(--accent);
+  background: var(--green);
   color: #fff;
-  box-shadow: 0 8px 20px var(--accent-glow);
+  box-shadow: none;
 }
 .button.primary:hover {
-  background: var(--accent-deep);
+  background: var(--green-dark);
 }
 .button.brand {
   background: var(--green);
@@ -217,21 +217,21 @@ svg {
   color: var(--green);
 }
 .button.light:hover {
-  background: var(--lime);
+  background: var(--mist);
 }
 .button.lime {
-  background: var(--lime);
-  color: var(--green);
+  background: var(--accent);
+  color: #fff;
 }
 .button.lime:hover {
-  background: #e7f3ce;
+  background: var(--accent-deep);
 }
 .button.outline {
-  border-color: #bcc9bb;
+  border-color: #b0b8ae;
   background: transparent;
 }
 .button.outline:hover {
-  background: #e9eddf;
+  background: var(--mist);
 }
 .button .icon {
   width: 18px;
@@ -321,7 +321,7 @@ a:focus-visible {
   right: 0;
   top: 0;
   height: 3px;
-  background: linear-gradient(90deg, var(--green) 0%, var(--accent) 55%, #f0c36a 100%);
+  background: var(--green);
 }
 .header-inner {
   max-width: 1440px;
@@ -1494,7 +1494,7 @@ h1 em {
   width: 38px;
   height: 38px;
   border-radius: 50%;
-  background: #edf1e7;
+  background: var(--mist);
   transition: background 0.2s;
 }
 .tour-explore:hover {
@@ -1656,7 +1656,7 @@ h1 em {
   font-size: 11px;
 }
 .process-section {
-  background: #edf1e7;
+  background: var(--mist);
   padding-block: var(--section-y);
 }
 .process-section > .container {
@@ -5774,7 +5774,7 @@ dialog::backdrop {
 }
 
 .stranger-include {
-  background: #edf1e7;
+  background: var(--mist);
 }
 .stranger-include-grid {
   display: grid;
@@ -6544,25 +6544,22 @@ dialog::backdrop {
   .stranger-price-board p { grid-area: copy; margin: 0; }
 }
 
-/* —— Scroll psychology: rhythm, attention, motion —— */
+/* Section rhythm ? flat stone/pine, no cream/saffron glow */
 .band-sand {
-  background:
-    linear-gradient(180deg, rgba(244, 235, 224, 0.95) 0%, rgba(255, 253, 249, 0.4) 55%, transparent 100%);
+  background: var(--sand);
 }
 .band-mist {
-  background: linear-gradient(180deg, var(--mist) 0%, #fff 88%);
+  background: var(--mist);
 }
 .band-warm {
-  background:
-    radial-gradient(ellipse 80% 60% at 85% 10%, rgba(224, 138, 42, 0.12), transparent 55%),
-    linear-gradient(165deg, #f3f7ef 0%, #fff8f0 48%, #fff 100%);
+  background: #eceae5;
 }
 .band-deep {
-  background: linear-gradient(180deg, #163c32 0%, #1a463b 100%);
-  color: #f4f7f1;
+  background: var(--green-dark);
+  color: #f2f1ee;
 }
 .band-deep .eyebrow {
-  color: #f0c36a;
+  color: #c4b5a8;
 }
 .band-deep h2,
 .band-deep h3,
@@ -6583,18 +6580,18 @@ dialog::backdrop {
   gap: 8px;
   min-height: 40px;
   padding: 8px 14px;
-  border-radius: 999px;
+  border-radius: 6px;
   border: 1px solid var(--line);
   background: #fff;
   font-size: 12px;
   font-weight: 700;
   color: var(--green);
-  box-shadow: 0 4px 14px rgba(14, 50, 41, 0.05);
+  box-shadow: none;
   transition: border-color 0.2s, transform 0.2s, background 0.2s;
 }
 .scroll-pulse a:hover {
-  border-color: var(--accent);
-  background: var(--accent-soft);
+  border-color: var(--green);
+  background: var(--mist);
   transform: translateY(-1px);
 }
 .scroll-pulse a em {
@@ -6610,11 +6607,11 @@ dialog::backdrop {
   color: var(--accent-deep);
 }
 .header-plan {
-  box-shadow: 0 8px 18px var(--accent-glow);
+  box-shadow: none;
 }
 .stranger-home .button.primary,
 .stranger-hero-actions .button.light {
-  box-shadow: 0 10px 24px var(--accent-glow);
+  box-shadow: none;
 }
 @media (prefers-reduced-motion: no-preference) {
   .reveal {

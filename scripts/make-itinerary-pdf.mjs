@@ -14,15 +14,15 @@ const root = fileURLToPath(new URL("..", import.meta.url));
 const assets = path.join(root, "dist", "assets");
 const outFile = path.join(assets, "manali-weekend-itinerary.pdf");
 
-const GREEN = "#184a3c";
-const ACCENT = "#e08a2a";
-const INK = "#1e322c";
-const MUTED = "#586860";
-const SAND = "#f4ebe0";
-const MIST = "#eef3ea";
+const GREEN = "#1c3d36";
+const ACCENT = "#a84532";
+const INK = "#1a2421";
+const MUTED = "#5a635e";
+const SAND = "#e9e6e0";
+const MIST = "#e6e9e4";
 const WHITE = "#ffffff";
-const WARN = "#fff4e5";
-const ALERT = "#fdeceb";
+const WARN = "#efe3df";
+const ALERT = "#f3e4e0";
 const TOTAL = 5;
 
 async function jpeg(name, w, h, pos = "centre") {

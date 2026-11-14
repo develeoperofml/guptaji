@@ -192,7 +192,7 @@ const manifest = {
   scope: "/",
   display: "standalone",
   background_color: "#ffffff",
-  theme_color: "#183f35",
+  theme_color: "#1c3d36",
   lang: "en-IN",
   dir: "ltr",
   categories: ["travel", "lifestyle"],
