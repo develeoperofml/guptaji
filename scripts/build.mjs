@@ -48,10 +48,20 @@ async function optimizePublicWebp() {
       await writeFile(tmp, buf);
       try {
         await unlink(full);
+        await rename(tmp, full);
       } catch {
-        /* Windows may keep a lock; rename still often works */
+        /* Windows file locks: overwrite in place, then drop tmp */
+        try {
+          await writeFile(full, buf);
+        } catch {
+          /* keep original */
+        }
+        try {
+          await unlink(tmp);
+        } catch {
+          /* ignore leftover tmp */
+        }
       }
-      await rename(tmp, full);
       saved += before - buf.length;
     } catch {
       /* keep original if sharp cannot rewrite this file */

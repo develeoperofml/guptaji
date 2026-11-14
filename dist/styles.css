@@ -5737,11 +5737,17 @@ dialog::backdrop {
 .stranger-places article.has-photo img {
   width: 100%;
   aspect-ratio: 16 / 10;
+  height: auto;
   object-fit: cover;
+  object-position: center;
   display: block;
+  background: #e8ebe4;
 }
 .stranger-places article.has-photo > div {
   padding: 14px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 .stranger-places span {
   display: inline-block;

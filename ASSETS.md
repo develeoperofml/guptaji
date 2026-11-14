@@ -133,6 +133,34 @@ Client-supplied Manali stay and camp photographs (WhatsApp originals in `manali_
 - `manali-activity` — optional paid adventure park (not included in package)
 - Adaptation: cropped/resized to WebP (1200w + 720w small), quality tuned for Vercel.
 
+## manali-vashisht.webp
+
+- Original: [File:Vashisht temple near manali.jpg](https://commons.wikimedia.org/wiki/File:Vashisht_temple_near_manali.jpg)
+- Photographer: Sharvipul
+- License: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0)
+- Adaptation: centre-cropped to 1200×800 WebP (+640w small) for Stranger Trips place cards.
+
+## manali-atal.webp
+
+- Original: [File:Atal Tunnel Entrance (South Portal), Manali.jpg](https://commons.wikimedia.org/wiki/File:Atal_Tunnel_Entrance_(South_Portal),_Manali.jpg)
+- Photographer: Tanvi.sharmaaa
+- License: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0)
+- Adaptation: centre-cropped to 1200×800 WebP (+640w small).
+
+## manali-naggar.webp
+
+- Original: [File:NaggarCastleRainyDay.jpg](https://commons.wikimedia.org/wiki/File:NaggarCastleRainyDay.jpg)
+- Photographer: Akshat Sharma
+- License: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0)
+- Adaptation: centre-cropped to 1200×800 WebP (+640w small).
+
+## manali-nehru.webp
+
+- Original: [File:Beas River at Nehru Kund, Manali (1).jpg](https://commons.wikimedia.org/wiki/File:Beas_River_at_Nehru_Kund,_Manali_(1).jpg)
+- Photographer: In Transit
+- License: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0)
+- Adaptation: centre-cropped to 1200×800 WebP (+640w small).
+
 ## Fonts
 
 Manrope regular and bold are locally hosted. Copyright 2018 The Manrope Project Authors. Source: [Google Fonts Manrope directory](https://github.com/google/fonts/tree/main/ofl/manrope). Licensed under the [SIL Open Font License 1.1](https://raw.githubusercontent.com/google/fonts/main/ofl/manrope/OFL.txt); the full license is included at `dist/assets/Manrope-OFL.txt`.
