@@ -29,9 +29,13 @@ const server = http.createServer(async (request, response) => {
     return;
   }
   try {
-    const pathname = decodeURIComponent(
+    let pathname = decodeURIComponent(
       new URL(request.url, "http://localhost").pathname,
     );
+    // Match production: /stranger-trips works with and without .html
+    if (pathname === "/stranger-trips" || pathname === "/stranger-trips/") {
+      pathname = "/stranger-trips.html";
+    }
     const resolved = path.resolve(
       root,
       `.${pathname === "/" ? "/index.html" : pathname}`,

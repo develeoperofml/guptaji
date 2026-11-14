@@ -52,6 +52,14 @@
     {
       "source": "/manifest.webmanifest",
       "destination": "/site.webmanifest"
+    },
+    {
+      "source": "/stranger-trips",
+      "destination": "/stranger-trips.html"
+    },
+    {
+      "source": "/stranger-trips/",
+      "destination": "/stranger-trips.html"
     }
   ]
 }

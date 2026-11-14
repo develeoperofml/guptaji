@@ -43,7 +43,7 @@ function foot(doc, n) {
   const y = doc.page.height - doc.page.margins.bottom - 12;
   doc.fillColor(MUTED).font("Helvetica").fontSize(7);
   doc.text(
-    "Gupta Ji Tour & Travels  |  +91 96029 70369  |  guptajitourtravel.cognivx.com/stranger-trips.html",
+    "Gupta Ji Tour & Travels  |  +91 96029 70369  |  guptajitourtravel.cognivx.com/stranger-trips",
     36,
     y,
     { width: 480, lineBreak: false },
@@ -505,7 +505,7 @@ async function build() {
   doc.roundedRect(36, y, 523, 78, 8).fill(GREEN);
   doc.fillColor(WHITE).font("Helvetica-Bold").fontSize(12).text("Book your seat", 50, y + 12);
   doc.font("Helvetica").fontSize(9).text(
-    "WhatsApp / Call   +91 96029 70369\nInstagram   @guptaji_travels01\nWeb   guptajitourtravel.cognivx.com/stranger-trips.html",
+    "WhatsApp / Call   +91 96029 70369\nInstagram   @guptaji_travels01\nWeb   guptajitourtravel.cognivx.com/stranger-trips",
     50,
     y + 30,
     { lineGap: 2 },

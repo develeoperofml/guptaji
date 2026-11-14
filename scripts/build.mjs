@@ -171,12 +171,12 @@ const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
     <xhtml:link rel="alternate" hreflang="x-default" href="${origin}/" />
   </url>
   <url>
-    <loc>${origin}/stranger-trips.html</loc>
+    <loc>${origin}/stranger-trips</loc>
     <lastmod>${today}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="en-IN" href="${origin}/stranger-trips.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="${origin}/stranger-trips.html" />
+    <xhtml:link rel="alternate" hreflang="en-IN" href="${origin}/stranger-trips" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="${origin}/stranger-trips" />
   </url>
 </urlset>
 `;
@@ -213,7 +213,7 @@ const manifest = {
     {
       name: "Manali weekend",
       short_name: "Manali",
-      url: "/stranger-trips.html#book",
+      url: "/stranger-trips#book",
     },
     {
       name: "Call us",
@@ -247,7 +247,8 @@ await writeFile(
   path.join(out, "seo-share.txt"),
   `Primary share image: ${ogImage}
 Canonical home: ${origin}/
-Canonical stranger trips: ${origin}/stranger-trips.html
+Canonical stranger trips: ${origin}/stranger-trips
+  Also works: ${origin}/stranger-trips.html
 Sitemap: ${origin}/sitemap.xml
 Indexing: ${siteConfig.allowIndexing ? "on" : "off"}
 Next steps: Google Search Console → Add property → Submit sitemap
