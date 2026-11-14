@@ -5362,6 +5362,9 @@ dialog::backdrop {
   display: block;
   min-height: 0;
 }
+.stranger-home-mosaic .mosaic-night {
+  object-position: center 42%;
+}
 .stranger-home-points {
   display: grid;
   gap: 10px;
@@ -5416,6 +5419,12 @@ dialog::backdrop {
   font-weight: 700;
   letter-spacing: 0.04em;
 }
+.stranger-gallery .gallery-night {
+  min-height: 280px;
+}
+.stranger-gallery .gallery-night img {
+  object-position: center 38%;
+}
 .stranger-stay {
   background:
     linear-gradient(180deg, rgba(243, 228, 212, 0.35), transparent 42%),
@@ -5441,6 +5450,12 @@ dialog::backdrop {
   grid-row: 1 / span 2;
   aspect-ratio: auto;
   min-height: 100%;
+}
+.stranger-stay-grid .stay-night {
+  aspect-ratio: 3 / 4;
+}
+.stranger-stay-grid .stay-night img {
+  object-position: center 40%;
 }
 .stranger-stay-grid img {
   width: 100%;

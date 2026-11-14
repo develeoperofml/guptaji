@@ -118,8 +118,10 @@ Walter Schachtschneider
 
 Client-supplied Manali stay and camp photographs (WhatsApp originals in `manali_images/`). Used on the Stranger Trips page stay gallery, Day 1 itinerary, home-page Manali mosaic, and optional adventure note.
 
-- `manali-stay-tents` — green-roof luxury tent row (home mosaic + gallery)
-- `manali-stay-tents-2` — full camp overview with mountains (stay feature)
+- `manali-tents-main` — green-roof tent row with mountains (main Manali / hero photo)
+- `manali-stay-tents` — green-roof luxury tent row
+- `manali-stay-tents-2` — full camp overview with mountains
+- `manali-night-bonfire` — portrait night bonfire / DJ night (kept portrait for sharpness)
 - `manali-stay-lawn` — safari tents and marigold gardens
 - `manali-stay-path` — wood-front tent cottages (Day 1 check-in)
 - `manali-stay-porch` — porch view over camp seating
