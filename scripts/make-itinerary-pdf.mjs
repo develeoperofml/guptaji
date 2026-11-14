@@ -113,7 +113,10 @@ async function build() {
   doc.save();
   doc.rect(0, 14, 595, 210).fillOpacity(0.3).fill(GREEN).fillOpacity(1);
   doc.restore();
-  const logoBuf = await jpeg("logo.webp", 220, 220);
+  const logoBuf = await sharp(path.join(assets, "logo.png"))
+    .resize(220, 220)
+    .png()
+    .toBuffer();
   doc.image(logoBuf, 470, 28, { width: 88, height: 88 });
   doc.fillColor(WHITE).font("Helvetica-Bold").fontSize(9).text("GUPTA JI TOUR & TRAVELS", 36, 30);
   doc.font("Helvetica").fontSize(8).text("CUSTOMER ITINERARY  |  EVERY WEEKEND", 36, 44);
