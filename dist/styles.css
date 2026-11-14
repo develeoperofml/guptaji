@@ -347,7 +347,7 @@ a:focus-visible {
   flex: 0 0 auto;
   aspect-ratio: 1 / 1;
   clip-path: circle(50% at 50% 50%);
-  box-shadow: 0 0 0 2px rgba(224, 138, 42, 0.45), 0 4px 12px rgba(14, 50, 41, 0.14);
+  box-shadow: 0 0 0 2px rgba(168, 69, 50, 0.35), 0 4px 12px rgba(18, 42, 37, 0.12);
   background: transparent;
 }
 .brand-mark img {
