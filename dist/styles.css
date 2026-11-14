@@ -310,12 +310,13 @@ a:focus-visible {
 }
 .site-header {
   height: 72px;
-  background: #fffdf9;
+  background: #e8872a;
   position: sticky;
   top: 0;
   z-index: 40;
-  border-bottom: 1px solid rgba(24, 74, 60, 0.1);
-  box-shadow: 0 8px 24px rgba(14, 50, 41, 0.06);
+  border-bottom: 1px solid rgba(120, 60, 10, 0.18);
+  box-shadow: 0 8px 24px rgba(120, 60, 10, 0.12);
+  color: #1a2421;
 }
 .site-header::before {
   content: "";
@@ -324,7 +325,7 @@ a:focus-visible {
   right: 0;
   top: 0;
   height: 3px;
-  background: var(--green);
+  background: #c46e16;
 }
 .header-inner {
   max-width: 1440px;
@@ -467,9 +468,9 @@ a:focus-visible {
   left: 0;
   width: 100%;
   padding: 15px 24px 25px;
-  background: #fffdf9;
-  border-top: 1px solid var(--line);
-  box-shadow: 0 18px 25px #183f3514;
+  background: #f0a04a;
+  border-top: 1px solid rgba(120, 60, 10, 0.18);
+  box-shadow: 0 18px 25px rgba(120, 60, 10, 0.14);
 }
 .mobile-nav a {
   display: block;
@@ -5540,8 +5541,8 @@ dialog::backdrop {
   position: sticky;
   top: 0;
   z-index: 30;
-  background: rgba(255, 255, 255, 0.94);
-  backdrop-filter: blur(8px);
+  background: #e8872a;
+  backdrop-filter: none;
 }
 .stranger-hero {
   position: relative;
