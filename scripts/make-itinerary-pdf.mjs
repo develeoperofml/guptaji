@@ -14,14 +14,14 @@ const root = fileURLToPath(new URL("..", import.meta.url));
 const assets = path.join(root, "dist", "assets");
 const outFile = path.join(assets, "manali-weekend-itinerary.pdf");
 
-const GREEN = "#c46e16";
-const ACCENT = "#e8872a";
+const GREEN = "#3d6f86";
+const ACCENT = "#a84532";
 const INK = "#1a2421";
 const MUTED = "#5a635e";
 const SAND = "#e9e6e0";
-const MIST = "#f3eee8";
+const MIST = "#e8eef2";
 const WHITE = "#ffffff";
-const WARN = "#f8e6cf";
+const WARN = "#efe3df";
 const ALERT = "#f3e4e0";
 const TOTAL = 5;
 
