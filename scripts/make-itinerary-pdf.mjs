@@ -15,14 +15,14 @@ const assets = path.join(root, "dist", "assets");
 const outFile = path.join(assets, "manali-weekend-itinerary.pdf");
 
 const GREEN = "#3d6f86";
-const ACCENT = "#a84532";
+const ACCENT = "#8ebdd4";
 const INK = "#1a2421";
 const MUTED = "#5a635e";
 const SAND = "#e9e6e0";
 const MIST = "#e8eef2";
 const WHITE = "#ffffff";
-const WARN = "#efe3df";
-const ALERT = "#f3e4e0";
+const WARN = "#d7e8f0";
+const ALERT = "#e8eef2";
 const TOTAL = 5;
 
 async function jpeg(name, w, h, pos = "centre") {

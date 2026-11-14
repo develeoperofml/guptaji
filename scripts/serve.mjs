@@ -3,7 +3,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { readFile, stat } from "node:fs/promises";
 
-const root = fileURLToPath(new URL("../dist/", import.meta.url));
+const root = fileURLToPath(new URL("../public/", import.meta.url));
 const argument = process.argv.find(
   (value, index) => process.argv[index - 1] === "--port",
 );
