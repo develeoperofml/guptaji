@@ -125,7 +125,7 @@ async function build() {
   doc.fontSize(8.5).text("Real tent stay + bonfire photos  |  Solang & Hadimba circuit", 36, 126);
 
   const chips = [
-    ["4 DAYS", "Fri night to Mon"],
+    ["2 DAYS", "Sat + Sun in Manali"],
     ["3 NIGHTS", "2 travel + 1 stay"],
     ["10:00 PM", "Friday departure"],
     ["9:00 PM", "Sunday return"],
@@ -263,7 +263,7 @@ async function build() {
 
   y = 70;
   doc.image(road, 36, y, { width: 200, height: 118 });
-  doc.fillColor(ACCENT).font("Helvetica-Bold").fontSize(8).text("DAY 1  FRIDAY", 252, y);
+  doc.fillColor(ACCENT).font("Helvetica-Bold").fontSize(8).text("DEPART  FRIDAY", 252, y);
   doc.fillColor(GREEN).fontSize(11).text("Delhi NCR departure", 252, y + 12);
   times(
     doc,
@@ -300,7 +300,7 @@ async function build() {
 
   y = 290;
   doc.image(pathStay, 36, y, { width: 200, height: 118 });
-  doc.fillColor(ACCENT).font("Helvetica-Bold").fontSize(8).text("DAY 2  SATURDAY", 252, y);
+  doc.fillColor(ACCENT).font("Helvetica-Bold").fontSize(8).text("DAY 1  SATURDAY", 252, y);
   doc.fillColor(GREEN).fontSize(11).text("Arrival & Manali town", 252, y + 12);
   doc.fillColor(MUTED).font("Helvetica").fontSize(7.5).text(
     "Expected arrival 12:00-3:00 PM (traffic, road, weather).",
@@ -365,7 +365,7 @@ async function build() {
   doc.text("Hadimba + Dhungri Forest", 304, y + 134);
 
   y = 220;
-  doc.fillColor(ACCENT).font("Helvetica-Bold").fontSize(8).text("DAY 3  SUNDAY", 36, y);
+  doc.fillColor(ACCENT).font("Helvetica-Bold").fontSize(8).text("DAY 2  SUNDAY", 36, y);
   doc.fillColor(GREEN).fontSize(11).text("Main sightseeing day", 140, y);
   doc.fillColor(MUTED).font("Helvetica").fontSize(7.5).text(
     "Ambitious plan - flex for traffic, parking, weather. 9:00 PM return is fixed.",
@@ -419,7 +419,7 @@ async function build() {
   );
 
   y = 490;
-  doc.fillColor(ACCENT).font("Helvetica-Bold").fontSize(8).text("DAY 4  MONDAY", 36, y);
+  doc.fillColor(ACCENT).font("Helvetica-Bold").fontSize(8).text("RETURN  MONDAY", 36, y);
   doc.fillColor(GREEN).fontSize(11).text("Return arrival", 140, y);
   times(
     doc,
