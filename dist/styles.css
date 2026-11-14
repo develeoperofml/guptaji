@@ -6626,3 +6626,20 @@ dialog::backdrop {
     flex: 0 0 auto;
   }
 }
+
+.stranger-itin-download {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px 18px;
+  margin: 8px 0 22px;
+}
+.stranger-itin-download span {
+  font-size: 13px;
+  color: var(--muted);
+  max-width: 36ch;
+  line-height: 1.45;
+}
+.stranger-home-actions {
+  flex-wrap: wrap;
+}
