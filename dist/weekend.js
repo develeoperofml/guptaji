@@ -169,7 +169,8 @@ export function strangerBookingUrl({
     weekends.find((weekend) => weekend.id === weekendId) || weekends[0];
   const share = findSharing(sharing);
   const peopleCount = Math.max(1, Math.min(12, Number(people) || 1));
-  const pickupLabel = String(pickup || "").trim() || "Delhi NCR (to confirm)";
+  const pickupLabel = String(pickup || "").trim() || "Delhi NCR / Jaipur (to confirm)";
+  const leaveTime = strangerLeaveTime(pickupLabel);
   const guestName = String(name || "").trim();
   const extraNote = String(note || "").trim();
   const total = share.price * peopleCount;
@@ -178,7 +179,7 @@ export function strangerBookingUrl({
     `Hello ${businessName}! I want to book a seat on the Manali Weekend Stranger Trip.`,
     "",
     `Departure weekend: ${chosen.label}`,
-    `Friday leave: ${formatWeekendLong(chosen.friday)} · 10:00 PM`,
+    `Friday leave: ${formatWeekendLong(chosen.friday)} · ${leaveTime}`,
     `Monday return window: ${formatWeekendLong(chosen.monday)}`,
     `Travellers: ${peopleCount}`,
     `Room sharing: ${share.label} · ${formatInr(share.price)} per person`,
@@ -198,13 +199,22 @@ export function strangerBookingUrl({
   return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(lines.join("\n"))}`;
 }
 
+/** Friday coach leave time — Jaipur is ~5 hours before Delhi. */
+export function strangerLeaveTime(pickup = "") {
+  const label = String(pickup).toLowerCase();
+  if (label.includes("jaipur")) return "5:00 PM";
+  return "10:00 PM";
+}
+
 export const STRANGER_PICKUPS = [
-  "Delhi — ISBT Kashmere Gate",
-  "Delhi — Akshardham / nearby metro",
-  "Gurugram — IFFCO Chowk",
-  "Noida — Sector 18 / nearby",
-  "Ghaziabad — Indirapuram / nearby",
-  "Faridabad — nearest metro / agreed point",
-  "Chandigarh — Sector 43 ISBT",
-  "Other Delhi NCR point (I’ll share on WhatsApp)",
+  "Jaipur — agreed point (host confirms) · leave ~5:00 PM",
+  "Jaipur — Railway Station / nearby · leave ~5:00 PM",
+  "Delhi — ISBT Kashmere Gate · leave ~10:00 PM",
+  "Delhi — Akshardham / nearby metro · leave ~10:00 PM",
+  "Gurugram — IFFCO Chowk · leave ~10:00 PM",
+  "Noida — Sector 18 / nearby · leave ~10:00 PM",
+  "Ghaziabad — Indirapuram / nearby · leave ~10:00 PM",
+  "Faridabad — nearest metro / agreed point · leave ~10:00 PM",
+  "Chandigarh — Sector 43 ISBT · leave ~10:00 PM",
+  "Other Delhi NCR point (I’ll share on WhatsApp) · leave ~10:00 PM",
 ];

@@ -121,13 +121,13 @@ async function build() {
   doc.fillColor(WHITE).font("Helvetica-Bold").fontSize(9).text("GUPTA JI TOUR & TRAVELS", 36, 30);
   doc.font("Helvetica").fontSize(8).text("CUSTOMER ITINERARY  |  EVERY WEEKEND", 36, 44);
   doc.font("Helvetica-Bold").fontSize(24).text("MANALI WEEKEND ESCAPE", 36, 72);
-  doc.font("Helvetica").fontSize(10).text("Sightseeing itinerary  |  Delhi NCR  >  Manali  >  Delhi NCR", 36, 108);
+  doc.font("Helvetica").fontSize(10).text("Sightseeing itinerary  |  Jaipur / Delhi NCR  >  Manali  >  return", 36, 108);
   doc.fontSize(8.5).text("Real tent stay + bonfire photos  |  Solang & Hadimba circuit", 36, 126);
 
   const chips = [
     ["2 DAYS", "Sat + Sun in Manali"],
     ["3 NIGHTS", "2 travel + 1 stay"],
-    ["10:00 PM", "Friday departure"],
+    ["5 / 10 PM", "Jaipur / Delhi leave"],
     ["9:00 PM", "Sunday return"],
   ];
   let x = 36;
@@ -193,12 +193,12 @@ async function build() {
   label(doc, "01  Trip overview", 36, 28);
   title(doc, "Trip at a glance", 36, 42);
   const overview = [
-    ["Rhythm", "Every weekend | Fri 10:00 PM leave > Sun 9:00 PM return start"],
+    ["Rhythm", "Every weekend | Jaipur ~5:00 PM or Delhi ~10:00 PM leave > Sun 9:00 PM return"],
     ["Delhi arrival", "Monday about 10:00 AM-1:00 PM - not guaranteed"],
     ["Stay pattern", "Two overnight journeys in vehicle + one Manali tent / hotel night"],
-    ["Core route", "Delhi NCR > Manali > Solang / town sightseeing > Delhi NCR"],
+    ["Core route", "Jaipur / Delhi NCR > Manali > Solang / town sightseeing > return"],
     ["Style", "Sightseeing only - viewpoints, temples, villages, markets, riverside"],
-    ["Pickup", "Delhi, Gurugram, Noida, Ghaziabad, Faridabad or Chandigarh"],
+    ["Pickup", "Jaipur (~5 PM) or Delhi NCR / Chandigarh (~10 PM)"],
   ];
   let y = 72;
   for (const [k, v] of overview) {
@@ -264,15 +264,15 @@ async function build() {
   y = 70;
   doc.image(road, 36, y, { width: 200, height: 118 });
   doc.fillColor(ACCENT).font("Helvetica-Bold").fontSize(8).text("DEPART  FRIDAY", 252, y);
-  doc.fillColor(GREEN).fontSize(11).text("Delhi NCR departure", 252, y + 12);
+  doc.fillColor(GREEN).fontSize(11).text("Jaipur or Delhi NCR departure", 252, y + 12);
   times(
     doc,
     [
-      ["8:30 PM", "Passenger reporting and attendance"],
+      ["~5:00 PM", "Jaipur boarding (about 5 hours before Delhi)"],
+      ["8:30 PM", "Delhi NCR reporting and attendance"],
       ["9:00 PM", "Luggage loading and seat allocation"],
       ["9:30 PM", "Trip briefing and introductions"],
       ["10:00 PM", "Depart Delhi NCR"],
-      ["12:00-12:30", "Short refreshment break"],
       ["Overnight", "Continue to Manali with meal & driver rests"],
     ],
     252,
@@ -473,7 +473,7 @@ async function build() {
   const inc = [
     "Breakfast and dinner",
     "Shared coach / Traveller-class vehicle",
-    "Delhi NCR pickup coordination",
+    "Jaipur or Delhi NCR pickup coordination",
     "One Manali tent / hotel night",
     "Sightseeing circuit + mountain driver plan",
   ];
