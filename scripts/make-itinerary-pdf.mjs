@@ -144,9 +144,9 @@ async function build() {
   label(doc, "Package prices per person", 36, 360);
   doc.roundedRect(36, 374, 523, 52, 6).fill(MIST);
   [
-    ["Quad", "Rs 6,500"],
-    ["Double", "Rs 7,000"],
-    ["Single", "Rs 7,500"],
+    ["Quad", "Rs 5,500"],
+    ["Double", "Rs 6,000"],
+    ["Single", "Rs 6,500"],
     ["Meals", "Breakfast + dinner"],
   ].forEach(([k, v], i) => {
     const cx = 50 + i * 128;

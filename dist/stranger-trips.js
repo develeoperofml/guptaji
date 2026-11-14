@@ -354,7 +354,7 @@ if ("IntersectionObserver" in window) {
 const stickyBar = document.createElement("a");
 stickyBar.className = "stranger-mobile-bar";
 stickyBar.href = "#book";
-stickyBar.innerHTML = `<span>From <strong>₹6,500</strong> · meals included</span><em>Book seat</em>`;
+stickyBar.innerHTML = `<span>From <strong>₹5,500</strong> · meals included</span><em>Book seat</em>`;
 document.body.appendChild(stickyBar);
 
 const bookSection = $("#book");
