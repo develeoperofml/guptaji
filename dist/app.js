@@ -1254,6 +1254,26 @@ updateSavedUI();
   });
 }
 
+/* Soft scroll reveals — keep pages feeling alive without noise */
+if ("IntersectionObserver" in window) {
+  const reveals = $$(".reveal");
+  if (reveals.length) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          io.unobserve(entry.target);
+        });
+      },
+      { rootMargin: "0px 0px -8% 0px", threshold: 0.12 },
+    );
+    reveals.forEach((el) => io.observe(el));
+  }
+} else {
+  $$(".reveal").forEach((el) => el.classList.add("is-visible"));
+}
+
 /* Mobile sticky plan bar on homepage */
 if (document.body.classList.contains("home-page")) {
   const stickyBar = document.createElement("a");

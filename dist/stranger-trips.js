@@ -331,6 +331,25 @@ if (bookForm && dateChips && peopleInput && pickupSelect) {
   window.setInterval(refreshBookableWeekends, 60_000);
 }
 
+if ("IntersectionObserver" in window) {
+  const reveals = $$(".reveal");
+  if (reveals.length) {
+    const revealIo = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          revealIo.unobserve(entry.target);
+        });
+      },
+      { rootMargin: "0px 0px -8% 0px", threshold: 0.12 },
+    );
+    reveals.forEach((el) => revealIo.observe(el));
+  }
+} else {
+  $$(".reveal").forEach((el) => el.classList.add("is-visible"));
+}
+
 /* Mobile sticky book bar */
 const stickyBar = document.createElement("a");
 stickyBar.className = "stranger-mobile-bar";
