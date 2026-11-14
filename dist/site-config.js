@@ -18,8 +18,8 @@ export const siteConfig = {
    */
   enquiryEmail: "info@cognivx.com",
   /** Instagram business profile for Gupta Ji Tour & Travels. */
-  instagramUrl: "https://www.instagram.com/jaipurcarrentaltaxi/",
-  instagramHandle: "@jaipurcarrentaltaxi",
+  instagramUrl: "https://www.instagram.com/guptaji_travels01/",
+  instagramHandle: "@guptaji_travels01",
   /** Digital partner / support studio. */
   linkedinUrl: "https://www.linkedin.com/company/cognivx",
   linkedinLabel: "Cognivx on LinkedIn",
