@@ -125,7 +125,9 @@ Client-supplied Manali stay and camp photographs (WhatsApp originals in `manali_
 - `manali-stay-porch` — porch view over camp seating
 - `manali-stay-pavilion` — covered outdoor dining beside tents
 - `manali-stay-room-a` / `room-b` — tent room interiors
-- `manali-stay-campfire` — evening chair circle
+- `manali-stay-campfire` — daytime bonfire seating circle
+- `manali-stay-bonfire` / `manali-stay-bonfire-wide` — real night bonfire with lit tents
+- `manali-falls` — mountain waterfall viewpoint near Manali
 - `manali-activity` — optional paid adventure park (not included in package)
 - Adaptation: cropped/resized to WebP (1200w + 720w small), quality tuned for Vercel.
 
