@@ -39,14 +39,16 @@ function bar(doc) {
 }
 
 function foot(doc, n) {
+  // Stay above bottom margin or PDFKit auto-adds blank pages.
+  const y = doc.page.height - doc.page.margins.bottom - 12;
   doc.fillColor(MUTED).font("Helvetica").fontSize(7);
   doc.text(
     "Gupta Ji Tour & Travels  |  +91 96029 70369  |  guptajitourtravel.cognivx.com/stranger-trips.html",
     36,
-    812,
-    { width: 480 },
+    y,
+    { width: 480, lineBreak: false },
   );
-  doc.text(`${n} / ${TOTAL}`, 530, 812, { width: 40, align: "right" });
+  doc.text(`${n} / ${TOTAL}`, 530, y, { width: 40, align: "right", lineBreak: false });
 }
 
 function label(doc, t, x, y) {
