@@ -5680,6 +5680,20 @@ dialog::backdrop {
   gap: 12px;
   margin-top: 28px;
 }
+.stranger-hero-actions .hero-enquire {
+  border-color: rgba(37, 211, 102, 0.85);
+  color: #fff;
+  background: rgba(37, 211, 102, 0.18);
+}
+.stranger-hero-actions .hero-enquire:hover {
+  background: #25d366;
+  border-color: #25d366;
+  color: #0b2a18;
+}
+.stranger-hero-actions .hero-enquire .icon-brand {
+  width: 18px;
+  height: 18px;
+}
 .stranger-hero-micro {
   margin: 14px 0 0;
   font-size: 12px;
