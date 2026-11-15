@@ -175,7 +175,7 @@ svg {
   font-weight: 700;
   letter-spacing: 2px;
   line-height: 1.7;
-  color: var(--accent-deep);
+  color: #a88900;
   margin-bottom: 18px;
 }
 .button {
@@ -200,22 +200,24 @@ svg {
   transform: translateY(-2px);
 }
 .button.primary {
-  background: var(--green-soft);
+  background: var(--lime);
   color: var(--ink);
-  box-shadow: none;
+  border-color: transparent;
+  box-shadow: 0 8px 22px var(--accent-glow);
 }
 .button.primary:hover {
-  background: var(--green);
-  color: #fff;
+  background: var(--lime-deep);
+  color: var(--ink);
 }
 .button.brand {
-  background: var(--green-soft);
+  background: var(--lime);
   color: var(--ink);
-  box-shadow: none;
+  border-color: transparent;
+  box-shadow: 0 8px 22px var(--accent-glow);
 }
 .button.brand:hover {
-  background: var(--green);
-  color: #fff;
+  background: var(--lime-deep);
+  color: var(--ink);
 }
 .button.light {
   background: #fff;
@@ -4147,11 +4149,11 @@ dialog::backdrop {
   align-items: center;
   gap: 9px;
   padding: 12px 18px 12px 13px;
-  background: var(--green);
-  color: #fff;
-  border: 1px solid #ffffff80;
+  background: var(--lime);
+  color: var(--ink);
+  border: 1px solid rgba(26, 36, 33, 0.12);
   border-radius: 40px;
-  box-shadow: 0 5px 25px rgba(18, 36, 48, 0.2);
+  box-shadow: 0 5px 25px var(--accent-glow);
   font-size: 12px;
   font-weight: 700;
   min-height: 48px;
@@ -4160,11 +4162,11 @@ dialog::backdrop {
     background 0.2s;
 }
 .call-float {
-  background: var(--green);
+  background: var(--lime);
 }
 .call-float:hover,
 .whatsapp-float:hover {
-  background: var(--green-dark);
+  background: var(--lime-deep);
   transform: translateY(-2px);
 }
 .call-float svg,
@@ -6748,10 +6750,15 @@ dialog::backdrop {
   font-weight: 800;
 }
 .price-pop {
-  color: var(--accent-deep);
+  color: #a88900;
 }
 .stranger-home-price-board strong {
-  color: var(--accent-deep);
+  color: #a88900;
+}
+.section-heading h2 em,
+.stranger-book-story h2 em,
+.final-cta h2 em {
+  color: var(--lime-deep);
 }
 .header-plan {
   box-shadow: none;
