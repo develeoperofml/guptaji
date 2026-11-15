@@ -84,7 +84,7 @@ async function build() {
     await Promise.all([
       jpeg("manali-tents-main.webp", 1400, 520),
       jpeg("manali-road.webp", 560, 320),
-      jpeg("manali-stay-tents.webp", 560, 320),
+      jpeg("manali-stay-tents-2.webp", 560, 320),
       jpeg("manali-stay-path.webp", 560, 320),
       jpeg("manali-stay-room-a.webp", 560, 320),
       jpeg("manali-solang.webp", 560, 300),
@@ -113,7 +113,7 @@ async function build() {
   doc.save();
   doc.rect(0, 14, 595, 210).fillOpacity(0.3).fill(GREEN).fillOpacity(1);
   doc.restore();
-  const logoBuf = await sharp(path.join(assets, "logo.png"))
+  const logoBuf = await sharp(path.join(assets, "logo.webp"))
     .resize(220, 220)
     .png()
     .toBuffer();

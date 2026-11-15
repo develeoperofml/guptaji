@@ -40,14 +40,6 @@
     "file": "swiss.webp"
   },
   {
-    "title": "File:1000 Three domes of Oia in Santorini Photo by Giles Laurent.jpg",
-    "source": "https://commons.wikimedia.org/wiki/File:1000_Three_domes_of_Oia_in_Santorini_Photo_by_Giles_Laurent.jpg",
-    "author": "Giles Laurent",
-    "license": "CC BY-SA 4.0",
-    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-    "file": "greece.webp"
-  },
-  {
     "title": "File:East facade Hawa Mahal Jaipur from ground level (July 2022) - img 01.jpg",
     "source": "https://commons.wikimedia.org/wiki/File:East_facade_Hawa_Mahal_Jaipur_from_ground_level_(July_2022)_-_img_01.jpg",
     "author": "Chainwit.",
@@ -161,15 +153,6 @@
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
     "source": "https://commons.wikimedia.org/wiki/File:Hadimba_Devi_Temple_Manali.jpg",
     "changes": "Resized and compressed to WebP; 1200 × 675"
-  },
-  {
-    "file": "manali-old.webp",
-    "title": "Old Manali village lanes",
-    "author": "Unsplash / Wikimedia Commons",
-    "license": "CC0",
-    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
-    "source": "https://commons.wikimedia.org/wiki/File:Old_Manali,_Manali,_India_(Unsplash_MSK-2kuYJDE).jpg",
-    "changes": "Resized and compressed to WebP; 1200 × 800"
   },
   {
     "file": "manali-mall.webp",

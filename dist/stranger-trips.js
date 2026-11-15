@@ -110,14 +110,20 @@ function initHeroVideo() {
   document.addEventListener("visibilitychange", () => {
     if (document.visibilityState === "visible" && playing && video.paused) start();
   });
+  // First gesture unlocks autoplay on strict mobile browsers.
+  const unlock = () => {
+    if (playing && video.paused) start();
+  };
+  document.addEventListener("touchstart", unlock, { once: true, passive: true });
+  document.addEventListener("pointerdown", unlock, { once: true });
   // Mobile Safari sometimes needs a later kick after layout.
   let attempts = 0;
   const kick = window.setInterval(() => {
     attempts += 1;
     start().then((ok) => {
-      if (ok || !video.paused || attempts >= 10) window.clearInterval(kick);
+      if (ok || !video.paused || attempts >= 12) window.clearInterval(kick);
     });
-  }, 400);
+  }, 350);
 }
 
 initHeroVideo();

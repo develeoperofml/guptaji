@@ -1,3 +1,4 @@
+import { createHash } from "node:crypto";
 import { build } from "esbuild";
 import { cp, mkdir, readFile, readdir, rename, rm, stat, unlink, writeFile } from "node:fs/promises";
 import path from "node:path";
@@ -125,7 +126,13 @@ function applyOrigin(html) {
     .replaceAll("https://guptajitourtravel.cognivx.com", origin);
 }
 
-async function publishHtml(fileName) {
+/** Bust year-long immutable CSS/JS caches when file contents change. */
+async function assetQuery(fileName) {
+  const buf = await readFile(path.join(out, fileName));
+  return createHash("sha1").update(buf).digest("hex").slice(0, 10);
+}
+
+async function publishHtml(fileName, bust) {
   let html = await readFile(path.join(dist, fileName), "utf8");
   html = applyOrigin(html);
   html = html.replace(
@@ -134,11 +141,37 @@ async function publishHtml(fileName) {
   );
   html = html.replace("<!-- SEO_VERIFICATION -->", verificationTag);
   html = html.replace("<!-- SEO_ANALYTICS -->", analyticsTag);
+  html = html.replaceAll('href="styles.css"', `href="styles.css?v=${bust.css}"`);
+  html = html.replaceAll('src="app.js"', `src="app.js?v=${bust.app}"`);
+  html = html.replaceAll(
+    'src="stranger-trips.js"',
+    `src="stranger-trips.js?v=${bust.stranger}"`,
+  );
+  // Also bust hero video / poster so mobile clients do not keep a stalled asset.
+  html = html.replaceAll(
+    "assets/stranger-dj-loop.mp4",
+    `assets/stranger-dj-loop.mp4?v=${bust.loop}`,
+  );
+  html = html.replaceAll(
+    "assets/stranger-dj-loop-poster.jpg",
+    `assets/stranger-dj-loop-poster.jpg?v=${bust.poster}`,
+  );
   await writeFile(path.join(out, fileName), html);
 }
 
-await publishHtml("index.html");
-await publishHtml("stranger-trips.html");
+const bust = {
+  css: await assetQuery("styles.css"),
+  app: await assetQuery("app.js"),
+  stranger: await assetQuery("stranger-trips.js"),
+  loop: await assetQuery(path.join("assets", "stranger-dj-loop.mp4")),
+  poster: await assetQuery(path.join("assets", "stranger-dj-loop-poster.jpg")),
+};
+
+await publishHtml("index.html", bust);
+await publishHtml("stranger-trips.html", bust);
+console.log(
+  `Cache bust v=${bust.css.slice(0, 6)} (css) / ${bust.stranger.slice(0, 6)} (stranger-js)`,
+);
 
 const robots = siteConfig.allowIndexing
   ? `User-agent: *

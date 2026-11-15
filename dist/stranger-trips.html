@@ -271,18 +271,34 @@
           <video
             class="stranger-hero-video is-active"
             id="hero-video"
+            src="assets/stranger-dj-loop.mp4"
+            poster="assets/stranger-dj-loop-poster.jpg"
             autoplay
             muted
+            defaultmuted
             loop
             playsinline
             webkit-playsinline
             preload="auto"
-            poster="assets/stranger-dj-loop-poster.jpg"
-            width="1280"
-            height="720"
-          >
-            <source src="assets/stranger-dj-loop.mp4" type="video/mp4" />
-          </video>
+            width="960"
+            height="540"
+          ></video>
+          <script>
+            (function () {
+              var v = document.getElementById("hero-video");
+              if (!v) return;
+              v.muted = true;
+              v.defaultMuted = true;
+              v.playsInline = true;
+              var kick = function () {
+                var p = v.play();
+                if (p && p.catch) p.catch(function () {});
+              };
+              kick();
+              v.addEventListener("loadeddata", kick, { once: true });
+              v.addEventListener("canplay", kick, { once: true });
+            })();
+          </script>
         </div>
         <div class="stranger-hero-shade"></div>
         <div class="stranger-hero-content container">
