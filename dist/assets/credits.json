@@ -129,47 +129,92 @@
   },
   {
     "file": "manali-hero.webp",
-    "title": "Manali deodar mist landscape",
-    "author": "Ranjithsiji",
-    "license": "CC BY-SA 4.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
-    "source": "https://commons.wikimedia.org/wiki/File:Grass_Deodar_Monsoon_Mist_Manali_Sep20_R16_04026.jpg",
-    "changes": "Resized and compressed to WebP; 1200 × 900"
+    "title": "Manali Himachal India (5)",
+    "author": "Shahnoor Habib Munmun",
+    "license": "CC BY 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Manali_Himachal_India_(5).JPG",
+    "changes": "Resized and compressed to WebP; people on snow slopes"
   },
   {
     "file": "manali-solang.webp",
-    "title": "Solang Valley, Manali",
-    "author": "Ninaras",
-    "license": "CC BY 4.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
-    "source": "https://commons.wikimedia.org/wiki/File:Solang_Valley,_India.jpg",
-    "changes": "Resized and compressed to WebP; 1200 × 800"
+    "title": "Paragliders at Solang Valley, Manali",
+    "author": "Madhumita Das",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Paragliders_at_Solang_Valley,_Manali.jpg",
+    "changes": "Resized and compressed to WebP"
   },
   {
     "file": "manali-hadimba.webp",
-    "title": "Hadimba Devi Temple, Manali",
-    "author": "Ninaras",
+    "title": "People Visiting Hadimba Temple Manali",
+    "author": "Shubham.rohilla.12",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
-    "source": "https://commons.wikimedia.org/wiki/File:Hadimba_Devi_Temple_Manali.jpg",
-    "changes": "Resized and compressed to WebP; 1200 × 675"
+    "source": "https://commons.wikimedia.org/wiki/File:People_Visiting_%22Hadimba_Temple%22_Manali.jpg",
+    "changes": "Resized and compressed to WebP; visitors at temple"
   },
   {
     "file": "manali-mall.webp",
-    "title": "Mall Road, Manali",
-    "author": "Ninaras",
-    "license": "CC BY-SA 4.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
-    "source": "https://commons.wikimedia.org/wiki/File:Mall_Road,_Manali.jpg",
-    "changes": "Resized and compressed to WebP; 1200 × 800"
+    "title": "Manali Himachal India (12)",
+    "author": "Shahnoor Habib Munmun",
+    "license": "CC BY 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Manali_Himachal_India_(12).JPG",
+    "changes": "Resized and compressed to WebP; town visitors"
   },
   {
     "file": "manali-road.webp",
-    "title": "Manali mountain highway scenery",
-    "author": "Ninaras",
-    "license": "CC BY-SA 4.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
-    "source": "https://commons.wikimedia.org/wiki/File:Manali_to_Rohtang_5.jpg",
-    "changes": "Resized and compressed to WebP; 1200 × 900"
+    "title": "Silhouette of people on mountain during golden hour",
+    "author": "Unsplash / EN_8vYGNacU",
+    "license": "Unsplash License",
+    "licenseUrl": "https://unsplash.com/license",
+    "source": "https://unsplash.com/photos/EN_8vYGNacU",
+    "changes": "Resized and compressed to WebP; friends around campfire"
+  },
+  {
+    "file": "manali-vashisht.webp",
+    "title": "Manali Himachal India (12)",
+    "author": "Shahnoor Habib Munmun",
+    "license": "CC BY 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Manali_Himachal_India_(12).JPG",
+    "changes": "Resized and compressed to WebP"
+  },
+  {
+    "file": "manali-nehru.webp",
+    "title": "Manali Himachal India (5)",
+    "author": "Shahnoor Habib Munmun",
+    "license": "CC BY 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Manali_Himachal_India_(5).JPG",
+    "changes": "Resized and compressed to WebP"
+  },
+  {
+    "file": "manali-atal.webp",
+    "title": "Group of hikers on mountain ridge",
+    "author": "Pexels / 1365425",
+    "license": "Pexels License",
+    "licenseUrl": "https://www.pexels.com/license/",
+    "source": "https://www.pexels.com/photo/people-standing-on-top-of-mountain-1365425/",
+    "changes": "Resized and compressed to WebP"
+  },
+  {
+    "file": "manali-naggar.webp",
+    "title": "Group of hikers on mountain ridge",
+    "author": "Pexels / 1365425",
+    "license": "Pexels License",
+    "licenseUrl": "https://www.pexels.com/license/",
+    "source": "https://www.pexels.com/photo/people-standing-on-top-of-mountain-1365425/",
+    "changes": "Resized and compressed to WebP"
+  },
+  {
+    "file": "manali-activity.webp",
+    "title": "Group of hikers on mountain ridge",
+    "author": "Pexels / 1365425",
+    "license": "Pexels License",
+    "licenseUrl": "https://www.pexels.com/license/",
+    "source": "https://www.pexels.com/photo/people-standing-on-top-of-mountain-1365425/",
+    "changes": "Resized and compressed to WebP"
   }
 ]
