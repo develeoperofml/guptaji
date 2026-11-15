@@ -11,11 +11,13 @@
   font-display: swap;
 }
 :root {
-  /* Cool stone + blue brand — no forest green / orange leftovers */
+  /* Cool stone + blue brand, vibrant yellow accent for energy / CTAs */
   --green: #3d6f86;
   --green-dark: #2f5a6e;
   --green-soft: #8ebdd4;
-  --lime: #d7e8f0;
+  --lime: #ffd60a;
+  --lime-deep: #e6c008;
+  --lime-soft: #fff6c2;
   --ivory: #f5f4f1;
   --sand: #e9e6e0;
   --mist: #e8eef2;
@@ -25,8 +27,8 @@
   --white: #fff;
   --accent: #3d6f86;
   --accent-deep: #2f5a6e;
-  --accent-soft: #d7e8f0;
-  --accent-glow: rgba(111, 163, 188, 0.22);
+  --accent-soft: #fff6c2;
+  --accent-glow: rgba(255, 214, 10, 0.28);
   --font: Manrope, "Trebuchet MS", sans-serif;
   --section-y: 72px;
   --section-gap: 32px;
@@ -223,11 +225,14 @@ svg {
   background: var(--mist);
 }
 .button.lime {
-  background: var(--accent);
-  color: #fff;
+  background: var(--lime);
+  color: var(--ink);
+  border-color: transparent;
+  box-shadow: 0 8px 22px var(--accent-glow);
 }
 .button.lime:hover {
-  background: var(--accent-deep);
+  background: var(--lime-deep);
+  color: var(--ink);
 }
 .button.outline {
   border-color: #b0b8ae;
@@ -447,11 +452,13 @@ a:focus-visible {
   right: 1px;
   top: 0;
   background: var(--lime);
+  color: var(--ink);
   border-radius: 50%;
   width: 17px;
   height: 17px;
   font-size: 9px;
   line-height: 17px;
+  font-weight: 800;
 }
 .header-plan {
   min-height: 44px;
@@ -1434,7 +1441,7 @@ h1 em {
   background: var(--lime);
 }
 .favorite[aria-pressed="true"] .icon {
-  fill: var(--green);
+  fill: var(--ink);
   stroke: var(--green);
 }
 .tour-content {
@@ -1503,6 +1510,7 @@ h1 em {
 }
 .tour-explore:hover {
   background: var(--lime);
+  color: var(--ink);
 }
 .tour-explore .icon {
   width: 18px;
@@ -1881,7 +1889,7 @@ h1 em {
   letter-spacing: -2px;
 }
 .final-cta h2 em {
-  color: var(--mist);
+  color: var(--lime);
 }
 .final-cta p:not(.eyebrow) {
   font-size: 11px;
@@ -2428,6 +2436,7 @@ dialog::backdrop {
 }
 .success-symbol {
   background: var(--lime);
+  color: var(--ink);
   width: 60px;
   height: 60px;
   border-radius: 50%;
@@ -6748,8 +6757,25 @@ dialog::backdrop {
   box-shadow: none;
 }
 .stranger-home .button.primary,
-.stranger-hero-actions .button.light {
-  box-shadow: none;
+.stranger-hero-actions .button.light,
+.stranger-hero-actions .button.lime {
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
+}
+.stranger-hero-actions .button.lime:hover {
+  filter: brightness(1.05);
+}
+.stranger-media-btn[aria-pressed="true"] {
+  border-color: rgba(255, 214, 10, 0.75);
+  color: var(--lime);
+}
+.stranger-snapshot article span {
+  color: var(--muted);
+}
+.stranger-book-steps li {
+  border-left-color: var(--lime);
+}
+.stranger-mobile-bar {
+  border-top: 3px solid var(--lime);
 }
 @media (prefers-reduced-motion: no-preference) {
   .reveal {
