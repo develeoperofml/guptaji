@@ -231,7 +231,7 @@ function updateSummary() {
     : "Jaipur ~5:00 PM · Delhi ~10:00 PM";
   summary.innerHTML = `
     <p class="summary-total"><strong>${total}</strong> <span>approx for ${people} · ${escapeHtml(share.label)}</span></p>
-    <p class="summary-meta">${escapeHtml(chosen?.label || "upcoming weekend")} · ${formatInr(share.price)}/person · breakfast &amp; dinner</p>
+    <p class="summary-meta">${escapeHtml(chosen?.label || "upcoming weekend")} · ${formatInr(share.price)}/person</p>
     <p class="summary-pickup">${pickup ? `Pickup: ${escapeHtml(pickup)}` : "Choose a pickup point to continue"} · ${escapeHtml(leaveHint)}</p>
   `;
 }
@@ -367,7 +367,7 @@ if ("IntersectionObserver" in window) {
 const stickyBar = document.createElement("a");
 stickyBar.className = "stranger-mobile-bar";
 stickyBar.href = "#book";
-stickyBar.innerHTML = `<span>From <strong>₹5,500</strong> · meals included</span><em>Book seat</em>`;
+stickyBar.innerHTML = `<span>From <strong>₹5,500</strong></span><em>Book seat</em>`;
 document.body.appendChild(stickyBar);
 
 const bookSection = $("#book");
