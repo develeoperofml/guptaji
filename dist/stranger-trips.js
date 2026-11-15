@@ -30,6 +30,12 @@ function initHeroVideos() {
   let index = 0;
   let playing = !reduceMotion;
 
+  const syncToggle = () => {
+    if (!toggleBtn) return;
+    toggleBtn.setAttribute("aria-pressed", String(playing));
+    toggleBtn.textContent = playing ? "Pause video" : "Play video";
+  };
+
   const show = (i) => {
     videos.forEach((video, n) => {
       video.classList.toggle("is-active", n === i);
@@ -47,21 +53,28 @@ function initHeroVideos() {
   const playActive = async () => {
     if (!playing) return;
     const active = videos[index];
+    active.muted = true;
+    active.defaultMuted = true;
+    active.setAttribute("muted", "");
+    active.playsInline = true;
     show(index);
     try {
       await active.play();
+      syncToggle();
+      return true;
     } catch {
-      playing = false;
-      if (toggleBtn) {
-        toggleBtn.setAttribute("aria-pressed", "false");
-        toggleBtn.textContent = "Play video";
-      }
+      // Keep trying — muted autoplay should work; don't force a Play click UX.
+      return false;
     }
   };
 
   videos.forEach((video, i) => {
     video.muted = true;
+    video.defaultMuted = true;
+    video.setAttribute("muted", "");
     video.playsInline = true;
+    video.setAttribute("playsinline", "");
+    video.setAttribute("webkit-playsinline", "");
     video.addEventListener("ended", () => {
       if (!playing) return;
       index = (i + 1) % videos.length;
@@ -72,15 +85,13 @@ function initHeroVideos() {
   if (toggleBtn) {
     toggleBtn.addEventListener("click", () => {
       playing = !playing;
-      toggleBtn.setAttribute("aria-pressed", String(playing));
-      toggleBtn.textContent = playing ? "Pause video" : "Play video";
+      syncToggle();
       if (playing) playActive();
       else videos.forEach((video) => video.pause());
     });
   }
 
   if (ambient && soundBtn) {
-    // Show sound control only when our ambient track is actually available.
     fetch(ambient.getAttribute("src") || "", { method: "HEAD" })
       .then((res) => {
         if (!res.ok) return;
@@ -109,14 +120,24 @@ function initHeroVideos() {
 
   if (reduceMotion) {
     show(0);
-    if (toggleBtn) {
-      toggleBtn.setAttribute("aria-pressed", "false");
-      toggleBtn.textContent = "Play video";
-    }
+    playing = false;
+    syncToggle();
     return;
   }
 
+  // Start immediately, then retry until the browser allows muted autoplay.
   playActive();
+  videos[0].addEventListener("loadeddata", () => playActive(), { once: true });
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "visible" && playing) playActive();
+  });
+  let attempts = 0;
+  const kick = window.setInterval(() => {
+    attempts += 1;
+    playActive().then((ok) => {
+      if (ok || attempts >= 8) window.clearInterval(kick);
+    });
+  }, 700);
 }
 
 initHeroVideos();
