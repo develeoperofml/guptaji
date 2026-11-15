@@ -174,21 +174,21 @@
   },
   {
     "file": "manali-vashisht.webp",
-    "title": "Manali Himachal India (12)",
-    "author": "Shahnoor Habib Munmun",
-    "license": "CC BY 3.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
-    "source": "https://commons.wikimedia.org/wiki/File:Manali_Himachal_India_(12).JPG",
-    "changes": "Resized and compressed to WebP"
+    "title": "Hot spring baths near Manali",
+    "author": "Commons / Vashisht hot spring scene",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "source": "https://commons.wikimedia.org/",
+    "changes": "Resized and compressed to WebP; unique Vashisht stop photo"
   },
   {
     "file": "manali-nehru.webp",
-    "title": "Manali Himachal India (5)",
-    "author": "Shahnoor Habib Munmun",
-    "license": "CC BY 3.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
-    "source": "https://commons.wikimedia.org/wiki/File:Manali_Himachal_India_(5).JPG",
-    "changes": "Resized and compressed to WebP"
+    "title": "Couple hiking toward snow-capped peaks",
+    "author": "Unsplash / 1551632811-561732d1e306",
+    "license": "Unsplash License",
+    "licenseUrl": "https://unsplash.com/license",
+    "source": "https://unsplash.com/photos/2WEICsLYRyQ",
+    "changes": "Resized and compressed to WebP; unique Nehru/Kothi card"
   },
   {
     "file": "manali-atal.webp",
@@ -197,24 +197,132 @@
     "license": "Pexels License",
     "licenseUrl": "https://www.pexels.com/license/",
     "source": "https://www.pexels.com/photo/people-standing-on-top-of-mountain-1365425/",
-    "changes": "Resized and compressed to WebP"
+    "changes": "Resized and compressed to WebP; unique Atal card"
   },
   {
     "file": "manali-naggar.webp",
-    "title": "Group of hikers on mountain ridge",
-    "author": "Pexels / 1365425",
+    "title": "Hiker overlooking mountain valley",
+    "author": "Pexels / 869258",
     "license": "Pexels License",
     "licenseUrl": "https://www.pexels.com/license/",
-    "source": "https://www.pexels.com/photo/people-standing-on-top-of-mountain-1365425/",
-    "changes": "Resized and compressed to WebP"
+    "source": "https://www.pexels.com/photo/person-standing-on-rock-near-mountain-869258/",
+    "changes": "Resized and compressed to WebP; unique Naggar card"
   },
   {
     "file": "manali-activity.webp",
-    "title": "Group of hikers on mountain ridge",
-    "author": "Pexels / 1365425",
+    "title": "Hiker on rocky peak above clouds",
+    "author": "Pexels / 1687845",
     "license": "Pexels License",
     "licenseUrl": "https://www.pexels.com/license/",
-    "source": "https://www.pexels.com/photo/people-standing-on-top-of-mountain-1365425/",
+    "source": "https://www.pexels.com/photo/man-standing-on-cliff-1687845/",
+    "changes": "Resized and compressed to WebP; unique adventure card"
+  },
+  {
+    "file": "trip-success-01.webp",
+    "title": "People Visiting Hadimba Temple Manali",
+    "author": "Shubham.rohilla.12",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:People_Visiting_%22Hadimba_Temple%22_Manali.jpg",
+    "changes": "Resized and compressed to WebP"
+  },
+  {
+    "file": "trip-success-02.webp",
+    "title": "Paragliders at Solang Valley, Manali",
+    "author": "Madhumita Das",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "source": "https://commons.wikimedia.org/wiki/File:Paragliders_at_Solang_Valley,_Manali.jpg",
+    "changes": "Resized and compressed to WebP"
+  },
+  {
+    "file": "trip-success-03.webp",
+    "title": "Friends around a campfire at night",
+    "author": "Unsplash / 1478131143081-80f7f84ca84d",
+    "license": "Unsplash License",
+    "licenseUrl": "https://unsplash.com/license",
+    "source": "https://unsplash.com/photos/WKusPdm_6s",
+    "changes": "Resized and compressed to WebP"
+  },
+  {
+    "file": "trip-success-04.webp",
+    "title": "Couple camping beside a lit trailer",
+    "author": "Unsplash / 1523987355523-c7b5b0dd90a7",
+    "license": "Unsplash License",
+    "licenseUrl": "https://unsplash.com/license",
+    "source": "https://unsplash.com/photos/U5rMrSI7Pn4",
+    "changes": "Resized and compressed to WebP"
+  },
+  {
+    "file": "trip-success-05.webp",
+    "title": "Friends at a waterfall viewpoint",
+    "author": "Pexels / 2387873",
+    "license": "Pexels License",
+    "licenseUrl": "https://www.pexels.com/license/",
+    "source": "https://www.pexels.com/photo/people-standing-near-waterfall-2387873/",
+    "changes": "Resized and compressed to WebP"
+  },
+  {
+    "file": "trip-success-06.webp",
+    "title": "Friends on a van roof during a road trip",
+    "author": "Pexels",
+    "license": "Pexels License",
+    "licenseUrl": "https://www.pexels.com/license/",
+    "source": "https://www.pexels.com/",
+    "changes": "Resized and compressed to WebP"
+  },
+  {
+    "file": "trip-success-07.webp",
+    "title": "Colourful tents on a mountain meadow",
+    "author": "Pexels",
+    "license": "Pexels License",
+    "licenseUrl": "https://www.pexels.com/license/",
+    "source": "https://www.pexels.com/",
+    "changes": "Resized and compressed to WebP"
+  },
+  {
+    "file": "trip-success-08.webp",
+    "title": "Hiker on ridge above alpine lake",
+    "author": "Unsplash / 1533240332313-0db49b459ad6",
+    "license": "Unsplash License",
+    "licenseUrl": "https://unsplash.com/license",
+    "source": "https://unsplash.com/",
+    "changes": "Resized and compressed to WebP"
+  },
+  {
+    "file": "trip-success-09.webp",
+    "title": "Traveller at a mountain waterfall",
+    "author": "Unsplash / 1517760444937-f6397edcbbcd",
+    "license": "Unsplash License",
+    "licenseUrl": "https://unsplash.com/license",
+    "source": "https://unsplash.com/photos/5QgIuuBxKwM",
+    "changes": "Resized and compressed to WebP"
+  },
+  {
+    "file": "trip-success-10.webp",
+    "title": "Adventurer on a cliff ledge",
+    "author": "Pexels / 1659438",
+    "license": "Pexels License",
+    "licenseUrl": "https://www.pexels.com/license/",
+    "source": "https://www.pexels.com/photo/man-sitting-on-cliff-1659438/",
+    "changes": "Resized and compressed to WebP"
+  },
+  {
+    "file": "trip-success-11.webp",
+    "title": "Hiker with trekking pole on a trail",
+    "author": "Pexels / 2108845",
+    "license": "Pexels License",
+    "licenseUrl": "https://www.pexels.com/license/",
+    "source": "https://www.pexels.com/photo/man-hiking-on-hill-2108845/",
+    "changes": "Resized and compressed to WebP"
+  },
+  {
+    "file": "trip-success-12.webp",
+    "title": "Happy group jumping together outdoors",
+    "author": "Pexels / 1128317",
+    "license": "Pexels License",
+    "licenseUrl": "https://www.pexels.com/license/",
+    "source": "https://www.pexels.com/photo/family-holding-hands-and-jumping-1128317/",
     "changes": "Resized and compressed to WebP"
   }
 ]

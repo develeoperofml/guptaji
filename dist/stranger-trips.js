@@ -514,6 +514,7 @@ function initImageLightbox() {
     ".stranger-day-photo img",
     ".stranger-places img",
     ".stranger-book-mood img",
+    ".trip-success-slide img",
   ].join(", ");
 
   const images = $$(selectors).filter((img) => Boolean(fullImageSrc(img)));
@@ -587,4 +588,105 @@ function initImageLightbox() {
   });
 }
 
+function initTripSuccessSlider() {
+  const root = document.querySelector("[data-trip-slider]");
+  if (!root) return;
+  const track = root.querySelector("[data-trip-track]");
+  const slides = [...root.querySelectorAll(".trip-success-slide")];
+  const dotsWrap = root.querySelector("[data-trip-dots]");
+  const countEl = root.querySelector("[data-trip-count]");
+  const prevBtn = root.querySelector("[data-trip-prev]");
+  const nextBtn = root.querySelector("[data-trip-next]");
+  if (!track || slides.length < 2) return;
+
+  let index = 0;
+  let timer = null;
+  let touchX = 0;
+
+  const render = () => {
+    track.style.transform = `translateX(-${index * 100}%)`;
+    slides.forEach((slide, i) => {
+      slide.classList.toggle("is-active", i === index);
+    });
+    if (dotsWrap) {
+      [...dotsWrap.children].forEach((dot, i) => {
+        dot.setAttribute("aria-selected", i === index ? "true" : "false");
+      });
+    }
+    if (countEl) countEl.textContent = `${index + 1} / ${slides.length}`;
+  };
+
+  const go = (next) => {
+    index = (next + slides.length) % slides.length;
+    render();
+  };
+
+  if (dotsWrap) {
+    slides.forEach((_, i) => {
+      const dot = document.createElement("button");
+      dot.type = "button";
+      dot.setAttribute("role", "tab");
+      dot.setAttribute("aria-label", `Show trip photo ${i + 1}`);
+      dot.addEventListener("click", () => {
+        go(i);
+        restart();
+      });
+      dotsWrap.appendChild(dot);
+    });
+  }
+
+  prevBtn?.addEventListener("click", () => {
+    go(index - 1);
+    restart();
+  });
+  nextBtn?.addEventListener("click", () => {
+    go(index + 1);
+    restart();
+  });
+
+  const viewport = root.querySelector(".trip-success-viewport");
+  viewport?.addEventListener(
+    "touchstart",
+    (event) => {
+      touchX = event.changedTouches?.[0]?.clientX || 0;
+    },
+    { passive: true },
+  );
+  viewport?.addEventListener(
+    "touchend",
+    (event) => {
+      const endX = event.changedTouches?.[0]?.clientX || 0;
+      const delta = endX - touchX;
+      if (Math.abs(delta) < 40) return;
+      go(delta < 0 ? index + 1 : index - 1);
+      restart();
+    },
+    { passive: true },
+  );
+
+  const stop = () => {
+    if (timer) window.clearInterval(timer);
+    timer = null;
+  };
+  const start = () => {
+    stop();
+    timer = window.setInterval(() => go(index + 1), 5200);
+  };
+  const restart = () => {
+    stop();
+    start();
+  };
+
+  root.addEventListener("mouseenter", stop);
+  root.addEventListener("mouseleave", start);
+  root.addEventListener("focusin", stop);
+  root.addEventListener("focusout", (event) => {
+    if (!root.contains(event.relatedTarget)) start();
+  });
+
+  render();
+  start();
+}
+
+initTripSuccessSlider();
 initImageLightbox();
