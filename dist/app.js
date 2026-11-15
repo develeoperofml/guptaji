@@ -13,9 +13,12 @@ import {
   nextWeekendDeparture,
   formatWeekendRange,
 } from "./weekend.js";
+import { bindLeadTracking, trackLead } from "./analytics.js";
 
 const $ = (selector, root = document) => root.querySelector(selector);
 const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
+
+bindLeadTracking();
 const storage = {
   get(key, fallback) {
     try {
@@ -531,7 +534,7 @@ function openArticle(id) {
     `<img class="dialog-hero" src="assets/${article.image}.webp" alt="${escape(article.alt)}" width="1000" height="550"><div class="dialog-inner article-dialog"><p class="eyebrow">${article.category}</p><h2 id="dialog-title">${article.title}</h2><p><em>${article.subtitle}</em></p><article>${article.body}</article><button class="button primary" data-action="plan" style="margin-top:25px">Plan a journey like this ${icon("arrow-up")}</button></div>`,
   );
 }
-const privacyHtml = `<div class="dialog-inner"><p class="eyebrow">YOUR DETAILS, HANDLED WITH CARE</p><h2 id="dialog-title">Privacy <em>information.</em></h2><p>This preview runs without advertising trackers or analytics. Display currency and saved journey IDs are stored in your browser when local storage is available.</p><h3>Your travel enquiry</h3><p>The planner prepares a WhatsApp message with the details you enter. Preparing a message does not send it. If you choose “Open WhatsApp to send”, those details are passed to WhatsApp in a link; you can review the message and choose whether to send it. WhatsApp's own privacy terms apply when you open its service.</p><p>Your name, email (if provided), country, optional phone, and travel preferences are kept in this page's memory while you plan. Your enquiry is saved in this browser only if you choose the optional save checkbox. You can also download a copy to your device.</p><h3>Your choices</h3><p>To remove a locally saved request, use the button below. Saved journey favourites can be removed using their heart buttons. You can clear all site data through your browser settings. Avoid saving personal information on a shared device.</p><button class="button outline" data-action="delete-request" style="margin-top:20px">Delete saved travel request</button><p>A final business privacy policy, business contact details, retention terms, and any future data-processing services must be confirmed before public launch.</p></div>`;
+const privacyHtml = `<div class="dialog-inner"><p class="eyebrow">YOUR DETAILS, HANDLED WITH CARE</p><h2 id="dialog-title">Privacy <em>information.</em></h2><p>This site uses Google Analytics 4 with anonymized IP addresses to understand visits and whether enquiry actions (WhatsApp, book form, itinerary PDF) are used. Display currency and saved journey IDs are stored in your browser when local storage is available.</p><h3>Your travel enquiry</h3><p>The planner prepares a WhatsApp message with the details you enter. Preparing a message does not send it. If you choose “Open WhatsApp to send”, those details are passed to WhatsApp in a link; you can review the message and choose whether to send it. WhatsApp's own privacy terms apply when you open its service.</p><p>Your name, email (if provided), country, optional phone, and travel preferences are kept in this page's memory while you plan. Your enquiry is saved in this browser only if you choose the optional save checkbox. You can also download a copy to your device.</p><h3>Your choices</h3><p>To remove a locally saved request, use the button below. Saved journey favourites can be removed using their heart buttons. You can clear all site data through your browser settings. Avoid saving personal information on a shared device.</p><button class="button outline" data-action="delete-request" style="margin-top:20px">Delete saved travel request</button><p>A final business privacy policy, business contact details, retention terms, and any future data-processing services must be confirmed before public launch.</p></div>`;
 function openPrivacy() {
   content(privacyHtml);
 }
@@ -1095,6 +1098,7 @@ plannerForm.addEventListener("submit", (event) => {
       ...lastRequest,
       preparedAt: new Date().toISOString(),
     });
+  trackLead({ method: "planner_form", cta: "prepare_enquiry" });
   plannerForm.hidden = true;
   $(".planner-progress").hidden = true;
   const success = $("#planner-success");

@@ -12,9 +12,12 @@ import {
   formatInr,
   strangerLeaveTime,
 } from "./weekend.js";
+import { bindLeadTracking, trackBookSeat } from "./analytics.js";
 
 const $ = (selector, root = document) => root.querySelector(selector);
 const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
+
+bindLeadTracking();
 
 function refreshWeekendLabels() {
   const { friday, monday } = nextWeekendDeparture();
@@ -316,6 +319,12 @@ if (bookForm && dateChips && peopleInput && pickupSelect) {
       return;
     }
     pickupSelect.removeAttribute("aria-invalid");
+    trackBookSeat({
+      pickup,
+      sharing: bookingState.sharing,
+      people,
+      weekendId: bookingState.weekendId,
+    });
     const url = strangerBookingUrl({
       whatsappNumber: siteConfig.whatsappNumber,
       businessName: siteConfig.businessName,
