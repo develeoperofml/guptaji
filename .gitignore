@@ -4,6 +4,8 @@ public/
 .qa/
 .openai/
 .tmp-assets/
+.tmp-video-analysis/
+tools/
 *.log
 .DS_Store
 

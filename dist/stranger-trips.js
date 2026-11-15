@@ -19,6 +19,108 @@ const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
 
 bindLeadTracking();
 
+function initHeroVideos() {
+  const videos = [$("#hero-video-a"), $("#hero-video-b")].filter(Boolean);
+  if (videos.length < 2) return;
+
+  const toggleBtn = $("#hero-video-toggle");
+  const soundBtn = $("#hero-sound-toggle");
+  const ambient = $("#hero-ambient");
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let index = 0;
+  let playing = !reduceMotion;
+
+  const show = (i) => {
+    videos.forEach((video, n) => {
+      video.classList.toggle("is-active", n === i);
+      if (n !== i) {
+        video.pause();
+        try {
+          video.currentTime = 0;
+        } catch {
+          /* ignore seek errors before metadata */
+        }
+      }
+    });
+  };
+
+  const playActive = async () => {
+    if (!playing) return;
+    const active = videos[index];
+    show(index);
+    try {
+      await active.play();
+    } catch {
+      playing = false;
+      if (toggleBtn) {
+        toggleBtn.setAttribute("aria-pressed", "false");
+        toggleBtn.textContent = "Play video";
+      }
+    }
+  };
+
+  videos.forEach((video, i) => {
+    video.muted = true;
+    video.playsInline = true;
+    video.addEventListener("ended", () => {
+      if (!playing) return;
+      index = (i + 1) % videos.length;
+      playActive();
+    });
+  });
+
+  if (toggleBtn) {
+    toggleBtn.addEventListener("click", () => {
+      playing = !playing;
+      toggleBtn.setAttribute("aria-pressed", String(playing));
+      toggleBtn.textContent = playing ? "Pause video" : "Play video";
+      if (playing) playActive();
+      else videos.forEach((video) => video.pause());
+    });
+  }
+
+  if (ambient && soundBtn) {
+    // Show sound control only when our ambient track is actually available.
+    fetch(ambient.getAttribute("src") || "", { method: "HEAD" })
+      .then((res) => {
+        if (!res.ok) return;
+        soundBtn.hidden = false;
+        soundBtn.addEventListener("click", async () => {
+          const on = soundBtn.getAttribute("aria-pressed") !== "true";
+          soundBtn.setAttribute("aria-pressed", String(on));
+          soundBtn.textContent = on ? "Sound off" : "Sound on";
+          if (on) {
+            try {
+              ambient.volume = 0.35;
+              await ambient.play();
+            } catch {
+              soundBtn.setAttribute("aria-pressed", "false");
+              soundBtn.textContent = "Sound on";
+            }
+          } else {
+            ambient.pause();
+          }
+        });
+      })
+      .catch(() => {
+        /* no ambient file yet */
+      });
+  }
+
+  if (reduceMotion) {
+    show(0);
+    if (toggleBtn) {
+      toggleBtn.setAttribute("aria-pressed", "false");
+      toggleBtn.textContent = "Play video";
+    }
+    return;
+  }
+
+  playActive();
+}
+
+initHeroVideos();
+
 function refreshWeekendLabels() {
   const { friday, monday } = nextWeekendDeparture();
   const rangeLabel = formatWeekendRange(friday, monday);
