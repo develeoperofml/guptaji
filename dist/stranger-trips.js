@@ -489,3 +489,102 @@ if (bookSection && "IntersectionObserver" in window) {
   );
   io.observe(bookSection);
 }
+
+function fullImageSrc(img) {
+  const srcset = img.getAttribute("srcset") || "";
+  if (srcset) {
+    const parts = srcset
+      .split(",")
+      .map((part) => part.trim().split(/\s+/)[0])
+      .filter(Boolean);
+    if (parts.length) return parts[parts.length - 1];
+  }
+  return img.currentSrc || img.getAttribute("src") || "";
+}
+
+function initImageLightbox() {
+  const root = $("#image-lightbox");
+  const stageImg = $("#image-lightbox-img");
+  const caption = $("#image-lightbox-caption");
+  const count = $("#image-lightbox-count");
+  if (!root || !stageImg) return;
+
+  const selectors = [
+    ".stranger-stay-grid img",
+    ".stranger-day-photo img",
+    ".stranger-places img",
+    ".stranger-book-mood img",
+  ].join(", ");
+
+  const images = $$(selectors).filter((img) => Boolean(fullImageSrc(img)));
+  if (!images.length) return;
+
+  let index = 0;
+  let lastFocus = null;
+
+  const render = () => {
+    const img = images[index];
+    if (!img) return;
+    const src = fullImageSrc(img);
+    const alt = img.getAttribute("alt") || "Trip photo";
+    stageImg.src = src;
+    stageImg.alt = alt;
+    caption.textContent = alt;
+    if (count) count.textContent = `${index + 1} / ${images.length}`;
+  };
+
+  const open = (i) => {
+    index = Math.max(0, Math.min(images.length - 1, i));
+    lastFocus = document.activeElement;
+    root.hidden = false;
+    document.body.classList.add("lightbox-open");
+    render();
+    root.querySelector("[data-lightbox-close]")?.focus();
+  };
+
+  const close = () => {
+    root.hidden = true;
+    document.body.classList.remove("lightbox-open");
+    stageImg.removeAttribute("src");
+    if (lastFocus && typeof lastFocus.focus === "function") lastFocus.focus();
+  };
+
+  const step = (delta) => {
+    index = (index + delta + images.length) % images.length;
+    render();
+  };
+
+  images.forEach((img, i) => {
+    img.classList.add("is-zoomable");
+    img.setAttribute("tabindex", "0");
+    img.setAttribute("role", "button");
+    img.setAttribute(
+      "aria-label",
+      `View larger: ${img.getAttribute("alt") || "trip photo"}`,
+    );
+    img.addEventListener("click", () => open(i));
+    img.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        open(i);
+      }
+    });
+  });
+
+  root.addEventListener("click", (event) => {
+    const target = event.target;
+    if (!(target instanceof Element)) return;
+    if (target.closest("[data-lightbox-close]") || target === root) close();
+    else if (target.closest("[data-lightbox-prev]")) step(-1);
+    else if (target.closest("[data-lightbox-next]")) step(1);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (root.hidden) return;
+    if (event.key === "Escape") close();
+    if (event.key === "ArrowLeft") step(-1);
+    if (event.key === "ArrowRight") step(1);
+  });
+}
+
+initImageLightbox();
