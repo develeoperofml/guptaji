@@ -19,16 +19,26 @@ const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
 
 bindLeadTracking();
 
-function initHeroVideos() {
-  const videos = [$("#hero-video-a"), $("#hero-video-b")].filter(Boolean);
-  if (videos.length < 2) return;
+function initHeroVideo() {
+  const video = $("#hero-video");
+  if (!video) return;
 
   const toggleBtn = $("#hero-video-toggle");
   const soundBtn = $("#hero-sound-toggle");
   const ambient = $("#hero-ambient");
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  let index = 0;
   let playing = !reduceMotion;
+
+  const armMuted = () => {
+    video.muted = true;
+    video.defaultMuted = true;
+    video.volume = 0;
+    video.setAttribute("muted", "");
+    video.playsInline = true;
+    video.setAttribute("playsinline", "");
+    video.setAttribute("webkit-playsinline", "");
+    video.loop = true;
+  };
 
   const syncToggle = () => {
     if (!toggleBtn) return;
@@ -36,58 +46,27 @@ function initHeroVideos() {
     toggleBtn.textContent = playing ? "Pause video" : "Play video";
   };
 
-  const show = (i) => {
-    videos.forEach((video, n) => {
-      video.classList.toggle("is-active", n === i);
-      if (n !== i) {
-        video.pause();
-        try {
-          video.currentTime = 0;
-        } catch {
-          /* ignore seek errors before metadata */
-        }
-      }
-    });
-  };
-
-  const playActive = async () => {
-    if (!playing) return;
-    const active = videos[index];
-    active.muted = true;
-    active.defaultMuted = true;
-    active.setAttribute("muted", "");
-    active.playsInline = true;
-    show(index);
+  const start = async () => {
+    if (!playing) return false;
+    armMuted();
     try {
-      await active.play();
+      await video.play();
       syncToggle();
       return true;
     } catch {
-      // Keep trying — muted autoplay should work; don't force a Play click UX.
       return false;
     }
   };
 
-  videos.forEach((video, i) => {
-    video.muted = true;
-    video.defaultMuted = true;
-    video.setAttribute("muted", "");
-    video.playsInline = true;
-    video.setAttribute("playsinline", "");
-    video.setAttribute("webkit-playsinline", "");
-    video.addEventListener("ended", () => {
-      if (!playing) return;
-      index = (i + 1) % videos.length;
-      playActive();
-    });
-  });
+  armMuted();
+  video.classList.add("is-active");
 
   if (toggleBtn) {
     toggleBtn.addEventListener("click", () => {
       playing = !playing;
       syncToggle();
-      if (playing) playActive();
-      else videos.forEach((video) => video.pause());
+      if (playing) start();
+      else video.pause();
     });
   }
 
@@ -119,28 +98,29 @@ function initHeroVideos() {
   }
 
   if (reduceMotion) {
-    show(0);
     playing = false;
+    video.pause();
     syncToggle();
     return;
   }
 
-  // Start immediately, then retry until the browser allows muted autoplay.
-  playActive();
-  videos[0].addEventListener("loadeddata", () => playActive(), { once: true });
+  start();
+  video.addEventListener("loadeddata", () => start(), { once: true });
+  video.addEventListener("canplay", () => start(), { once: true });
   document.addEventListener("visibilitychange", () => {
-    if (document.visibilityState === "visible" && playing) playActive();
+    if (document.visibilityState === "visible" && playing && video.paused) start();
   });
+  // Mobile Safari sometimes needs a later kick after layout.
   let attempts = 0;
   const kick = window.setInterval(() => {
     attempts += 1;
-    playActive().then((ok) => {
-      if (ok || attempts >= 8) window.clearInterval(kick);
+    start().then((ok) => {
+      if (ok || !video.paused || attempts >= 10) window.clearInterval(kick);
     });
-  }, 700);
+  }, 400);
 }
 
-initHeroVideos();
+initHeroVideo();
 
 function refreshWeekendLabels() {
   const { friday, monday } = nextWeekendDeparture();
