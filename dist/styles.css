@@ -11,10 +11,12 @@
   font-display: swap;
 }
 :root {
-  /* Cool stone + blue brand, vibrant yellow accent for energy / CTAs */
+  /* Brand mid blue for chrome; deep navy for yellow-accent panels (teal + yellow clashed) */
   --green: #3d6f86;
   --green-dark: #2f5a6e;
   --green-soft: #8ebdd4;
+  --deep: #14283c;
+  --deep-mid: #1c3a52;
   --lime: #ffd60a;
   --lime-deep: #e6c008;
   --lime-soft: #fff6c2;
@@ -6111,8 +6113,11 @@ dialog::backdrop {
 }
 .stranger-book-card-top {
   padding: 22px 22px 14px;
-  background: linear-gradient(165deg, var(--green-dark) 0%, var(--green) 100%);
+  background:
+    radial-gradient(120% 90% at 100% 0%, rgba(255, 214, 10, 0.16) 0%, transparent 55%),
+    linear-gradient(160deg, var(--deep) 0%, var(--deep-mid) 100%);
   color: #fff;
+  border-bottom: 3px solid var(--lime);
 }
 .stranger-book-card-top .eyebrow {
   color: var(--lime);
@@ -6132,22 +6137,23 @@ dialog::backdrop {
 }
 .stranger-book-price span {
   font-size: 12px;
-  opacity: 0.8;
+  color: rgba(255, 246, 194, 0.78);
 }
 .stranger-book-price strong {
   font-size: 28px;
   color: var(--lime);
   letter-spacing: -0.6px;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
 }
 .stranger-book-price em {
   font-style: normal;
   font-size: 13px;
-  color: var(--mist);
+  color: rgba(232, 238, 242, 0.82);
 }
 .stranger-book-card-note {
   margin: 0;
   font-size: 13px;
-  color: var(--mist);
+  color: rgba(232, 238, 242, 0.88);
   line-height: 1.45;
 }
 .stranger-book-card-note strong {
@@ -6634,9 +6640,9 @@ dialog::backdrop {
     gap: 12px;
     padding: 12px 14px;
     border-radius: 14px;
-    background: var(--green-dark);
+    background: linear-gradient(135deg, var(--deep) 0%, var(--deep-mid) 100%);
     color: #fff;
-    box-shadow: 0 14px 30px rgba(18, 36, 48, 0.28);
+    box-shadow: 0 14px 30px rgba(20, 40, 60, 0.32);
     text-decoration: none;
     max-width: calc(100vw - 24px);
     box-sizing: border-box;
@@ -6660,7 +6666,7 @@ dialog::backdrop {
     padding: 8px 12px;
     border-radius: 999px;
     background: var(--lime);
-    color: var(--green-dark);
+    color: var(--deep);
     white-space: nowrap;
   }
   .home-mobile-bar.is-hidden,
@@ -6705,16 +6711,26 @@ dialog::backdrop {
   background: #eceae5;
 }
 .band-deep {
-  background: #3d6f86;
-  color: #f2f1ee;
+  background:
+    radial-gradient(90% 70% at 0% 0%, rgba(255, 214, 10, 0.12) 0%, transparent 50%),
+    linear-gradient(165deg, var(--deep) 0%, var(--deep-mid) 100%);
+  color: #f5f7fa;
+  border-top: 3px solid var(--lime);
 }
 .band-deep .eyebrow {
-  color: var(--mist);
+  color: var(--lime);
 }
 .band-deep h2,
 .band-deep h3,
 .band-deep p {
   color: inherit;
+}
+.band-deep h2 em,
+.band-deep .button.lime {
+  color: inherit;
+}
+.band-deep .button.lime {
+  color: var(--deep);
 }
 .scroll-pulse {
   display: flex;
