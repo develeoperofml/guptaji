@@ -102,6 +102,15 @@ await build({
   logLevel: "silent",
 });
 
+await build({
+  entryPoints: [path.join(dist, "trip-page.js")],
+  bundle: true,
+  format: "esm",
+  minify: true,
+  outfile: path.join(out, "trip-page.js"),
+  logLevel: "silent",
+});
+
 const robotsContent = siteConfig.allowIndexing
   ? "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
   : "noindex, nofollow";
@@ -147,6 +156,10 @@ async function publishHtml(fileName, bust) {
     'src="stranger-trips.js"',
     `src="stranger-trips.js?v=${bust.stranger}"`,
   );
+  html = html.replaceAll(
+    'src="trip-page.js"',
+    `src="trip-page.js?v=${bust.trip || bust.stranger}"`,
+  );
   // Also bust hero video / poster so mobile clients do not keep a stalled asset.
   html = html.replaceAll(
     "assets/stranger-dj-loop.mp4",
@@ -163,14 +176,23 @@ const bust = {
   css: await assetQuery("styles.css"),
   app: await assetQuery("app.js"),
   stranger: await assetQuery("stranger-trips.js"),
+  trip: await assetQuery("trip-page.js"),
   loop: await assetQuery(path.join("assets", "stranger-dj-loop.mp4")),
   poster: await assetQuery(path.join("assets", "stranger-dj-loop-poster.jpg")),
 };
 
 await publishHtml("index.html", bust);
 await publishHtml("stranger-trips.html", bust);
+
+const { allTrips } = await import(
+  pathToFileURL(path.join(dist, "trips", "catalog.js")).href
+);
+const tripPages = allTrips();
+for (const trip of tripPages) {
+  await publishHtml(trip.htmlFile, bust);
+}
 console.log(
-  `Cache bust v=${bust.css.slice(0, 6)} (css) / ${bust.stranger.slice(0, 6)} (stranger-js)`,
+  `Cache bust v=${bust.css.slice(0, 6)} (css) / ${bust.stranger.slice(0, 6)} (stranger-js) / ${bust.trip.slice(0, 6)} (trip-js)`,
 );
 
 const robots = siteConfig.allowIndexing
@@ -211,6 +233,18 @@ const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
     <xhtml:link rel="alternate" hreflang="en-IN" href="${origin}/stranger-trips" />
     <xhtml:link rel="alternate" hreflang="x-default" href="${origin}/stranger-trips" />
   </url>
+${tripPages
+  .map(
+    (trip) => `  <url>
+    <loc>${origin}${trip.path}</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="en-IN" href="${origin}${trip.path}" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="${origin}${trip.path}" />
+  </url>`,
+  )
+  .join("\n")}
 </urlset>
 `;
 await writeFile(path.join(out, "sitemap.xml"), sitemap);

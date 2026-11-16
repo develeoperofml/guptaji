@@ -7,9 +7,11 @@
   "scripts": {
     "dev": "node scripts/serve.mjs",
     "start": "node scripts/serve.mjs",
-    "check": "node --check dist/app.js && node --check dist/analytics.js && node --check dist/data.js && node --check dist/destinations-data.js && node --check dist/site-config.js && node --check dist/weekend.js && node --check dist/stranger-trips.js && node --check scripts/serve.mjs && node --check scripts/build.mjs",
+    "check": "node --check dist/app.js && node --check dist/analytics.js && node --check dist/data.js && node --check dist/destinations-data.js && node --check dist/site-config.js && node --check dist/weekend.js && node --check dist/stranger-trips.js && node --check dist/trip-page.js && node --check scripts/serve.mjs && node --check scripts/build.mjs",
     "pdf:itinerary": "node scripts/make-itinerary-pdf.mjs",
-    "build": "node scripts/make-itinerary-pdf.mjs && node scripts/build.mjs"
+    "pdf:trips": "node scripts/make-trip-pdfs.mjs",
+    "generate:trips": "node scripts/generate-trip-pages.mjs",
+    "build": "node scripts/generate-trip-pages.mjs && node scripts/make-itinerary-pdf.mjs && node scripts/make-trip-pdfs.mjs && node scripts/build.mjs"
   },
   "engines": {
     "node": "26.x"

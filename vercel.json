@@ -69,6 +69,46 @@
     {
       "source": "/stranger-trips/",
       "destination": "/stranger-trips.html"
+    },
+    {
+      "source": "/trip/kasol-kheerganga",
+      "destination": "/trip-kasol-kheerganga.html"
+    },
+    {
+      "source": "/trip/kasol-kheerganga/",
+      "destination": "/trip-kasol-kheerganga.html"
+    },
+    {
+      "source": "/trip/mcleodganj-triund",
+      "destination": "/trip-mcleodganj-triund.html"
+    },
+    {
+      "source": "/trip/mcleodganj-triund/",
+      "destination": "/trip-mcleodganj-triund.html"
+    },
+    {
+      "source": "/trip/chopta-tungnath",
+      "destination": "/trip-chopta-tungnath.html"
+    },
+    {
+      "source": "/trip/chopta-tungnath/",
+      "destination": "/trip-chopta-tungnath.html"
+    },
+    {
+      "source": "/trip/jibhi-tirthan",
+      "destination": "/trip-jibhi-tirthan.html"
+    },
+    {
+      "source": "/trip/jibhi-tirthan/",
+      "destination": "/trip-jibhi-tirthan.html"
+    },
+    {
+      "source": "/trip/spiti-valley",
+      "destination": "/trip-spiti-valley.html"
+    },
+    {
+      "source": "/trip/spiti-valley/",
+      "destination": "/trip-spiti-valley.html"
     }
   ]
 }

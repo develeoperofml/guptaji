@@ -3,7 +3,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { readFile, stat } from "node:fs/promises";
 
-const root = fileURLToPath(new URL("../public/", import.meta.url));
+const root = path.resolve(fileURLToPath(new URL("../public/", import.meta.url)));
 const argument = process.argv.find(
   (value, index) => process.argv[index - 1] === "--port",
 );
@@ -32,15 +32,18 @@ const server = http.createServer(async (request, response) => {
     let pathname = decodeURIComponent(
       new URL(request.url, "http://localhost").pathname,
     );
-    // Match production: /stranger-trips works with and without .html
+    // Match production clean URLs
     if (pathname === "/stranger-trips" || pathname === "/stranger-trips/") {
       pathname = "/stranger-trips.html";
     }
-    const resolved = path.resolve(
-      root,
-      `.${pathname === "/" ? "/index.html" : pathname}`,
-    );
-    if (resolved !== root && !resolved.startsWith(`${root}${path.sep}`)) {
+    const tripMatch = pathname.match(/^\/trip\/([a-z0-9-]+)\/?$/);
+    if (tripMatch) {
+      pathname = `/trip-${tripMatch[1]}.html`;
+    }
+    const rel = pathname === "/" ? "index.html" : pathname.replace(/^\/+/, "");
+    const resolved = path.resolve(root, rel);
+    const rootPrefix = root.endsWith(path.sep) ? root : `${root}${path.sep}`;
+    if (resolved !== root && !resolved.startsWith(rootPrefix)) {
       response.writeHead(403);
       response.end("Forbidden");
       return;
